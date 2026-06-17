@@ -302,6 +302,18 @@
   .service-card:hover .card-img {
     transform: scale(1.06);
   }
+
+  .tricolour-gradient {
+    background: linear-gradient(to right, #036135, #ffc64b, #235492);
+  }
+
+  .radial-glow {
+    background: radial-gradient(
+      circle at top right,
+      rgba(35, 84, 146, 0.1) 0%,
+      transparent 50%
+    );
+  }
 }
 
 /* ─────────────────────────────────────────────────────────────
