@@ -2,14 +2,10 @@
 
 import { navLinks } from "@/data/site";
 import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import {
-  MdArrowForward,
-  MdClose,
-  MdLocalHospital,
-  MdMenu,
-} from "react-icons/md";
+import { MdArrowForward, MdClose, MdMenu } from "react-icons/md";
 
 /* Framer variants */
 const drawerVariants = {
@@ -58,7 +54,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={[
           "fixed top-0 w-full z-50 transition-all duration-300",
-          "flex justify-between items-center h-20",
+          "flex justify-between items-center h-24",
           "px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)",
           "max-w-[1280px] mx-auto left-0 right-0",
           scrolled ? "nav-scrolled" : "bg-transparent",
@@ -66,24 +62,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <motion.span
-            whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-            transition={{ duration: 0.4 }}
-            className="text-[color:var(--color-primary)] text-3xl"
-          >
-            <MdLocalHospital />
-          </motion.span>
-          <span
-            style={{
-              fontFamily: "var(--font-serif)",
-              fontSize: "1.375rem",
-              fontWeight: 700,
-              color: "var(--color-primary)",
-              letterSpacing: "-0.01em",
-            }}
-          >
-            Anointing Health Care
-          </span>
+          <Image src={"/images/logo.png"} width={70} height={70} />
         </Link>
 
         {/* Desktop links */}

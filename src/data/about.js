@@ -185,3 +185,31 @@ export const safetyData = {
     },
   ],
 };
+
+export const cqcStandards = [
+  {
+    title: "Safe",
+    color: "#036135",
+    delay: 100,
+  },
+  {
+    title: "Effective",
+    color: "#235492",
+    delay: 180,
+  },
+  {
+    title: "Caring",
+    color: "#C9961A",
+    delay: 260,
+  },
+  {
+    title: "Responsive",
+    color: "#036135",
+    delay: 340,
+  },
+  {
+    title: "Well-led",
+    color: "#235492",
+    delay: 420,
+  },
+];

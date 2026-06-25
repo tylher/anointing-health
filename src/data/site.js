@@ -2,8 +2,9 @@ import { FaFacebookF, FaInstagram, FaShareAlt } from "react-icons/fa";
 
 /* ─── Navigation ──────────────────────────────────────────── */
 export const navLinks = [
-  { label: "Services", href: "#services" },
+  { label: "Home", href: "/" },
   { label: "Who We Are", href: "/about" },
+  { label: "Services", href: "/services" },
   { label: "Our Approach", href: "#approach" },
   { label: "Impact", href: "#impact" },
   { label: "Contact", href: "#contact" },
