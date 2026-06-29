@@ -7,7 +7,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { MdArrowDownward, MdArrowForward, MdCheckCircle } from "react-icons/md";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -112,12 +112,23 @@ export default function CinematicServices() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Deterministic per-panel wipe direction. Math.random() here would run
+  // during render and produce a different value on the server vs. the
+  // client, which is a hydration mismatch waiting to happen. Cycling by
+  // index keeps the variety but is stable across renders.
   const directions = useMemo(
-    () => services.map(() => DIRECTIONS[Math.floor(Math.random() * 4)]),
+    () => services.map((_, i) => DIRECTIONS[i % DIRECTIONS.length]),
     [],
   );
 
-  useEffect(() => {
+  // useLayoutEffect (not useEffect) so this resolves before the browser
+  // paints — avoids a frame of the heavy desktop scroll-jacking layout
+  // flashing on phones before swapping to <MobileServices />. Note this
+  // only smooths the client-side transition; the very first server-rendered
+  // paint is still the desktop markup, since `window` isn't available
+  // during SSR. A fully flash-free version would need a CSS-only
+  // (hidden/md:block) approach or server-side UA detection.
+  useLayoutEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();
     window.addEventListener("resize", check);
@@ -130,22 +141,31 @@ export default function CinematicServices() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
+    // Mirrors the same index/total → (index+1)/total windows used by
+    // usePanelProgress below. The previous Math.round(v * (total - 1))
+    // used different bucket boundaries than the panels themselves, which
+    // created a gap where the panel actually on screen had pointer-events
+    // disabled while a still-hidden panel was marked "active" (and
+    // therefore the only one receiving clicks).
     setActiveIndex(
-      Math.max(
-        0,
-        Math.min(TOTAL_PANELS - 1, Math.round(v * (TOTAL_PANELS - 1))),
-      ),
+      Math.max(0, Math.min(TOTAL_PANELS - 1, Math.floor(v * TOTAL_PANELS))),
     );
   });
 
-  const scrollToPanel = useCallback((i) => {
-    if (!containerRef.current) return;
-    const h = containerRef.current.scrollHeight / TOTAL_PANELS;
-    window.scrollTo({
-      top: containerRef.current.offsetTop + h * i,
-      behavior: "smooth",
-    });
-  }, []);
+  const scrollToPanel = useCallback(
+    (i) => {
+      // Skip if this dot is already active — otherwise clicking the
+      // current panel's own dot snaps scroll back to the very start of
+      // its window, which feels like an unintended jump backward.
+      if (!containerRef.current || i === activeIndex) return;
+      const h = containerRef.current.scrollHeight / TOTAL_PANELS;
+      window.scrollTo({
+        top: containerRef.current.offsetTop + h * i,
+        behavior: "smooth",
+      });
+    },
+    [activeIndex],
+  );
 
   if (isMobile) return <MobileServices />;
 
@@ -246,15 +266,6 @@ function ServicePanel({
 
   const ctaOpacity = useTransform(active, [0.54, 0.8], [0, 1]);
   const ctaY = useTransform(active, [0.52, 0.8], [16, 0]);
-
-  // Gradient direction: carpet fades toward the direction it came from
-  // so the "open" edge stays solid and the image bleeds through at the edge
-  const gradientMap = {
-    bottom: `linear-gradient(to bottom, rgba(${theme.solidRgb},1) 75%, rgba(${theme.solidRgb},0) 100%)`,
-    top: `linear-gradient(to top,    rgba(${theme.solidRgb},1) 75%, rgba(${theme.solidRgb},0) 100%)`,
-    left: `linear-gradient(to left,   rgba(${theme.solidRgb},1) 75%, rgba(${theme.solidRgb},0) 100%)`,
-    right: `linear-gradient(to right,  rgba(${theme.solidRgb},1) 75%, rgba(${theme.solidRgb},0) 100%)`,
-  };
 
   return (
     <div
@@ -391,12 +402,12 @@ function ServicePanel({
               color: "#ffffff",
             }}
           >
-            <span
-              className="material-symbols-outlined"
-              style={{ fontSize: 22 }}
-            >
-              <service.icon />
-            </span>
+            {/* react-icons renders an actual SVG, so the old
+                `material-symbols-outlined` font-icon wrapper around it did
+                nothing useful — sizing it directly via the `size` prop is
+                explicit and matches how MdArrowDownward is already done
+                below. */}
+            <service.icon size={22} />
           </div>
         </motion.div>
 
@@ -449,21 +460,14 @@ function ServicePanel({
               style={{
                 display: "flex",
                 alignItems: "flex-start",
-                gap: 3,
+                gap: 8,
                 marginBottom: 7,
               }}
             >
-              <span
-                className="material-symbols-outlined"
-                style={{
-                  fontSize: 16,
-                  marginTop: 3,
-                  color: theme.badge,
-                  flexShrink: 0,
-                }}
-              >
-                <MdCheckCircle/>
-              </span>
+              <MdCheckCircle
+                size={16}
+                style={{ marginTop: 3, color: theme.badge, flexShrink: 0 }}
+              />
               <span
                 style={{
                   fontFamily: "Nunito Sans, sans-serif",
@@ -480,10 +484,11 @@ function ServicePanel({
 
         {/* CTA — DM Sans button spec */}
         <motion.div style={{ opacity: ctaOpacity, y: ctaY }}>
-          <a
+          <motion.a
             href={service.link}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "1")}
+            whileHover={{ opacity: 0.85 }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.2 }}
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -498,17 +503,11 @@ function ServicePanel({
               borderRadius: 8,
               textDecoration: "none",
               boxShadow: "0 4px 20px rgba(27,77,49,0.12)",
-              transition: "opacity 0.2s ease",
             }}
           >
             Explore {service.title}
-            <span
-              className="material-symbols-outlined"
-              style={{ fontSize: 16 }}
-            >
-              <MdArrowForward/>
-            </span>
-          </a>
+            <MdArrowForward size={16} />
+          </motion.a>
         </motion.div>
       </div>
 

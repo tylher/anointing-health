@@ -76,11 +76,11 @@ export default function Navbar() {
 
         {/* Desktop actions */}
         <div className="hidden md:flex items-center gap-3">
-          <Link href="#refer" className="btn-ghost !py-2 !px-4 text-sm">
+          <Link href="/referral" className="btn-ghost !py-2 !px-4 text-sm">
             Refer Someone
           </Link>
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-            <Link href="#support" className="btn-primary !py-2 !px-5 text-sm">
+            <Link href="/support" className="btn-primary !py-2 !px-5 text-sm">
               Get Support <MdArrowForward />
             </Link>
           </motion.div>
@@ -144,14 +144,14 @@ export default function Navbar() {
               className="mt-10 flex flex-col gap-3"
             >
               <Link
-                href="#refer"
+                href="/referral"
                 className="btn-ghost text-center justify-center"
                 onClick={() => setMobileOpen(false)}
               >
                 Refer Someone
               </Link>
               <Link
-                href="#support"
+                href="/support"
                 className="btn-primary justify-center"
                 onClick={() => setMobileOpen(false)}
               >
