@@ -8,10 +8,10 @@ export default function CQCComplianceSection() {
   return (
     <section className="bg-surface py-[80px]">
       <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
-        <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2">
+        <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
           {/* Left Column */}
-          <div className="fade-up w-full">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] shadow-lg">
+          <div className="fade-up w-full ">
+            <div className="relative aspect-5/5 overflow-hidden rounded-[20px] shadow-lg h-125 w-full">
               <Image
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0_hrNZQFrIal-kDdN951bk_3S8K9ZiFGdavCZDHUthk-q17Z9cuhu9MmxJ8r4aYz5vX06FnEcG4aNLjQ4MXT8NDZbVGkKUwSkLqsDy5SALZ-hdNyqTxRDiQhyDjN0DlDC89tGuJGS8HW0WihyTCW3Zgr1l_SiBaXsksc3kvUD7Yx3mIDfYqrruiOYfSc8-WQ2QcKSh-TpNC75d-aveMTTbcmbaFAUoT_R6VmEUNSX5HgO8p8VeX73x3FCzlGG79Hg86-5bC2elot5"
                 alt="Care worker holding clinical care plan"
@@ -32,7 +32,7 @@ export default function CQCComplianceSection() {
           </div>
 
           {/* Right Column */}
-          <div className="slide-in-right flex w-full flex-col rounded-[24px] bg-white shadow-xl">
+          <div className="flex w-full flex-col rounded-[24px] bg-white shadow-xl">
             <div className="rounded-t-[24px] bg-[#036135] py-4 text-center">
               <h3 className="font-['DM_Sans'] text-lg font-bold text-white">
                 CQC Regulated Service

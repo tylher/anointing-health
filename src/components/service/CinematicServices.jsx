@@ -2,12 +2,23 @@
 
 import { services } from "@/data/services-data";
 import {
+  animate,
   motion,
+  useMotionValue,
   useMotionValueEvent,
   useScroll,
   useTransform,
 } from "framer-motion";
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
+import {
+  forwardRef,
+  useCallback,
+  useEffect,
+  useImperativeHandle,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { MdArrowDownward, MdArrowForward, MdCheckCircle } from "react-icons/md";
 
 // ─── Constants ────────────────────────────────────────────────────────────────
@@ -92,6 +103,17 @@ function carpetClip(dir, p) {
   }
 }
 
+// Matches a filter-bar value against a service. Tries the most likely
+// field names in order — adjust this if your services-data.js uses a
+// different shape (e.g. an array of tags rather than a single category).
+function matchesFilter(service, filter) {
+  const needle = String(filter).toLowerCase();
+  const candidates = [service.filter, service.category, service.id]
+    .filter(Boolean)
+    .map((v) => String(v).toLowerCase());
+  return candidates.includes(needle);
+}
+
 // ─── Scroll helpers ───────────────────────────────────────────────────────────
 
 function usePanelProgress(svp, index, total) {
@@ -107,7 +129,7 @@ function useActiveProgress(pp) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
-export default function CinematicServices() {
+const CinematicServices = forwardRef(function CinematicServices(_props, ref) {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
@@ -122,12 +144,8 @@ export default function CinematicServices() {
   );
 
   // useLayoutEffect (not useEffect) so this resolves before the browser
-  // paints — avoids a frame of the heavy desktop scroll-jacking layout
-  // flashing on phones before swapping to <MobileServices />. Note this
-  // only smooths the client-side transition; the very first server-rendered
-  // paint is still the desktop markup, since `window` isn't available
-  // during SSR. A fully flash-free version would need a CSS-only
-  // (hidden/md:block) approach or server-side UA detection.
+  // paints — avoids a frame of the heavy desktop layout flashing on phones
+  // before swapping to <MobileServices />.
   useLayoutEffect(() => {
     const check = () => setIsMobile(window.innerWidth <= 768);
     check();
@@ -142,11 +160,8 @@ export default function CinematicServices() {
 
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     // Mirrors the same index/total → (index+1)/total windows used by
-    // usePanelProgress below. The previous Math.round(v * (total - 1))
-    // used different bucket boundaries than the panels themselves, which
-    // created a gap where the panel actually on screen had pointer-events
-    // disabled while a still-hidden panel was marked "active" (and
-    // therefore the only one receiving clicks).
+    // usePanelProgress below, so the panel actually on screen is the one
+    // marked active (and therefore the one receiving clicks).
     setActiveIndex(
       Math.max(0, Math.min(TOTAL_PANELS - 1, Math.floor(v * TOTAL_PANELS))),
     );
@@ -154,9 +169,6 @@ export default function CinematicServices() {
 
   const scrollToPanel = useCallback(
     (i) => {
-      // Skip if this dot is already active — otherwise clicking the
-      // current panel's own dot snaps scroll back to the very start of
-      // its window, which feels like an unintended jump backward.
       if (!containerRef.current || i === activeIndex) return;
       const h = containerRef.current.scrollHeight / TOTAL_PANELS;
       window.scrollTo({
@@ -166,6 +178,33 @@ export default function CinematicServices() {
     },
     [activeIndex],
   );
+
+  // Public API for the filter bar (or any other external trigger) to jump
+  // to the panel matching a given category. Works on both the desktop
+  // scroll-jacked layout and the mobile stacked layout.
+  const scrollToCategory = useCallback(
+    (filter) => {
+      const targetIndex =
+        !filter || filter === "all"
+          ? 0
+          : services.findIndex((s) => matchesFilter(s, filter));
+      const idx = targetIndex === -1 ? 0 : targetIndex;
+
+      if (isMobile) {
+        document
+          .getElementById(`service-panel-${services[idx].id}`)
+          ?.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        scrollToPanel(idx);
+      }
+    },
+    [isMobile, scrollToPanel],
+  );
+
+  useImperativeHandle(ref, () => ({ scrollToCategory, scrollToPanel }), [
+    scrollToCategory,
+    scrollToPanel,
+  ]);
 
   if (isMobile) return <MobileServices />;
 
@@ -225,7 +264,9 @@ export default function CinematicServices() {
       </div>
     </section>
   );
-}
+});
+
+export default CinematicServices;
 
 function ServicePanel({
   service,
@@ -237,9 +278,33 @@ function ServicePanel({
   isActive,
 }) {
   const pp = usePanelProgress(scrollYProgress, index, total);
-  const active = useActiveProgress(pp);
+  const scrollActive = useActiveProgress(pp);
 
-  // Carpet wipe — clipPath driven directly by scroll
+  // Panel 0 should be fully visible the instant the page loads, not only
+  // after the visitor starts scrolling — otherwise the hero sits blank
+  // until they've scrolled ~10% into the first panel's window. We animate
+  // a separate "entrance" progress from 0 → 1 on mount (only for the
+  // first panel; every other panel's entranceProgress is just a static 1
+  // and never animates) and combine it with the scroll-driven progress,
+  // always using whichever is further along.
+  const entranceProgress = useMotionValue(index === 0 ? 0 : 1);
+
+  useEffect(() => {
+    if (index !== 0) return;
+    const controls = animate(entranceProgress, 1, {
+      duration: 1.1,
+      ease: "easeOut",
+      delay: 0.15,
+    });
+    return () => controls.stop();
+  }, [index, entranceProgress]);
+
+  const active = useTransform([entranceProgress, scrollActive], ([e, s]) =>
+    Math.max(e, s),
+  );
+
+  // Carpet wipe — clipPath driven directly by scroll (or the mount
+  // animation, for panel 0)
   const clipPath = useTransform(active, (p) => carpetClip(direction, p));
   // Subtle scale bloom as carpet opens
   const carpetScale = useTransform(active, [0, 1], [0.67, 1.0]);
@@ -288,14 +353,7 @@ function ServicePanel({
         />
       </div>
 
-      {/*
-        ── Carpet ──
-        - Width: 68% (left content area + ~25% into image)
-        - Height: 78vh — shorter than the full-height image
-        - Vertically centered so image peeks above and below
-        - Background: solid→transparent gradient so image bleeds through
-        - clipPath wipes in; stays fully revealed once active=1
-      */}
+      {/* ── Carpet ── */}
       <motion.div
         className="absolute left-0"
         style={{
@@ -307,7 +365,6 @@ function ServicePanel({
           scale: carpetScale,
           transformOrigin: "center center",
           zIndex: 3,
-          // Fixed left→right gradient, always
           background: `linear-gradient(to right,
       rgba(${theme.solidRgb}, 1) 0%,
       rgba(${theme.solidRgb}, 0.95) 50%,
@@ -339,17 +396,17 @@ function ServicePanel({
         />
       </motion.div>
 
-      {/* ── Content — sits on top of carpet, left 44%, vertically centered ── */}
+      {/* ── Content — sits on top of carpet, vertically centered ── */}
       <div
         className="absolute left-0 flex flex-col justify-center"
         style={{
-          width: "46%", // tighter — never reaches transparent zone
+          width: "46%",
           height: "78vh",
           top: "50%",
-          transform: "translateY(calc(-50% + 60px))", // clears navbar + filterbar
+          transform: "translateY(calc(-50% + 60px))",
           paddingLeft: 64,
           paddingRight: 32,
-          zIndex: 4, // above carpet
+          zIndex: 4,
         }}
       >
         {/* Category badge + counter */}
@@ -402,16 +459,11 @@ function ServicePanel({
               color: "#ffffff",
             }}
           >
-            {/* react-icons renders an actual SVG, so the old
-                `material-symbols-outlined` font-icon wrapper around it did
-                nothing useful — sizing it directly via the `size` prop is
-                explicit and matches how MdArrowDownward is already done
-                below. */}
             <service.icon size={22} />
           </div>
         </motion.div>
 
-        {/* Headline — EB Garamond, h2 spec from design guide */}
+        {/* Headline */}
         <motion.h2
           style={{
             opacity: titleOpacity,
@@ -428,7 +480,7 @@ function ServicePanel({
           {service.title}
         </motion.h2>
 
-        {/* Description — Nunito Sans body-lg */}
+        {/* Description */}
         <motion.p
           style={{
             opacity: descOpacity,
@@ -482,7 +534,7 @@ function ServicePanel({
           ))}
         </motion.ul>
 
-        {/* CTA — DM Sans button spec */}
+        {/* CTA */}
         <motion.div style={{ opacity: ctaOpacity, y: ctaY }}>
           <motion.a
             href={service.link}
@@ -553,7 +605,11 @@ function MobileServices() {
       {services.map((service, index) => {
         const theme = PANEL_THEMES[index % PANEL_THEMES.length];
         return (
-          <div key={service.id} style={{ marginTop: index === 0 ? 0 : 12 }}>
+          <div
+            key={service.id}
+            id={`service-panel-${service.id}`}
+            style={{ marginTop: index === 0 ? 0 : 12, scrollMarginTop: 72 }}
+          >
             <div
               style={{
                 width: "100%",

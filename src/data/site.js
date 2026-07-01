@@ -6,8 +6,8 @@ export const navLinks = [
   { label: "Who We Are", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Our Approach", href: "/our-approach" },
-  { label: "Impact", href: "#impact" },
-  { label: "Contact", href: "#contact" },
+  { label: "Impact", href: "/impact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 /* ─── Hero trust chips ────────────────────────────────────── */
@@ -19,12 +19,9 @@ export const trustChips = [
 
 /* ─── Hero images ─────────────────────────────────────────── */
 export const heroImages = {
-  primary:
-    "https://lh3.googleusercontent.com/aida/AP1WRLvwEMaqc4EXOvVl2Is83DvhckKPc027qy-s_WBuFrqJrmlXmj-9bayfARv4oUwteBRhBHxKfKAlSmJJRCztLLVxjYkAJOo4tIrXTSPwR4Evnk-gr7oK14UgDX1dcPYoRE5k12pEmy1szTkFsW-N9KKFJC6sZ_fg9rukWX67NxtxsHDju-ek86jLkc4p8fz-l279XKYzgU_H1FqYLt_8i2RHqz8EmJR6klgfeTr85ImJ2RrQ3DMYqwhUOo96",
-  secondary:
-    "https://lh3.googleusercontent.com/aida/AP1WRLsBBPEuW67gSC5MaKsCTQyFgLWL3SRNvV1yuKAhWHoJIrG3-iPpJIhSC3AnXMIkUBGVNn_FqPbgbI1zDX8ObgsPqdpItTPLDRwUKwplR5FkoJZ4JwyJSgrOimNYF955cfdKSOr8UyQAf9dhsrtw_s8SVBgz6-hcaKZHN2Rs9raGwcnyrJF-xZYwGI1KprHW8uSXAbKW1AW_2j-EuT3vm07XRP9LotBDN6UvdzxrSB_Go6RZKo9a51eUaSk",
-  tertiary:
-    "https://lh3.googleusercontent.com/aida/AP1WRLsTJxiW4_fbX6lgF9EhTYbWE8r5IxcSXH_UpuNh-RfPUJrqQG7dOf23ms5EMtvsQ-UNUL6ygf6LibmOzGibsxEfgYL6ONDMDbhBpIBf3HtNPy6oBwB5VIbmdtucbETMfO4zyvvSn6MXMXnazwEuid20VvWmCeL0PL9ZxOyA4DQCNBrAyhNTrA_bWbwq3DwufyM8Op-CSkdwhD34Q6XhT6_wxsffaAS5EGr2GPXorqRGxi2pBco7LpdVY8I",
+  primary: "/images/home-2.jpg",
+  secondary: "/images/home-1.jpg",
+  tertiary: "/images/home-3.jpg",
 };
 
 /* ─── Stats bar ───────────────────────────────────────────── */
@@ -42,8 +39,7 @@ export const whoWeHelpTabs = [
   {
     id: "individuals",
     label: "Individuals",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuAyf8w38J3f61cODddUH462v3n20WP55Shr6ewWE_Il8wsHqlj6F7mmlue74z9CuusWIvKZNEtoio9MVO7WbTz-x2F2xpmrfG9SIHWSwDRAl7--dqHSua1RFyAEcJ-XmfVceCR8ZdPJK72RsGtz6GsJuU7ilnNnTOpMBTsDgKFptCqrrHqyhyrJockISXcCtMt7z9jGJv_FSnI-P8VZER43jyALsjZRv-vhWg_0r2sLqm4nNrdUHtn95z9eoscMgK8f19jaHdHvhtQV",
+    imageUrl: '/images/WWH1.jpg',
     imageAlt: "Individuals Support",
     description:
       "Adults experiencing mental health challenges, isolation, or difficulty accessing traditional services.",
@@ -60,8 +56,7 @@ export const whoWeHelpTabs = [
   {
     id: "families",
     label: "Families & Carers",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDotAT5nvyUtuAD0NlV5ih8D63mNnWA7j2qlkyuaTbt40vDOREo86th9tzrP6_3eQ39zzuY3OgPtEhZfXG1_Zmhzl7AjRyGfTEPHBaCY36NqjbDTb0TrvS0tHePsQ2XKIsN2WafgJqX_J4DW7EyeAdGWf_-mdAkSsQQorDi1JB3dMirZc_JH7GQHmI4xjC4Fo6mgXjPT9iTKU62x1IO-12ijPx2WKBMbE_FEIjx6n-Ws__YquOn3Kyaohzk5YGOj95nJH51KZY0iDru",
+    imageUrl: '/images/WWH2.jpg',
     imageAlt: "Families and Carers Support",
     description: "We support the people who support others.",
     checkItems: [
@@ -76,8 +71,7 @@ export const whoWeHelpTabs = [
   {
     id: "professionals",
     label: "Professionals & Referrers",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCR09dKuK8OMTVxX9hUgCLElm4fgws01ZOPh8hPGXVSSvs0ghIBCL4cTm89zTxvKnXoCBRcDgp2d_TSnTN_54qikKdBN-ck8LZ3F0pMN8jUzZAjl5OXATPbcUG56TEI8OUfWcB1f7rBTIpAOrevohTPIobM-BdBM1w73ooNBK0RkV2X4VuTmX1FBNP0we8NfQTT9JQymI1YtXxtFQN8FJzy0OVv_Ut0cd4E50Cx-snzzO-sNcaR3KHm32LBcBlBMJK9B7Eo5ZWGAgUs",
+    imageUrl: '/images/WWH3.jpg',
     imageAlt: "Professionals and Referrers",
     description:
       "We work with NHS, local authority, and voluntary sector partners.",
@@ -132,9 +126,7 @@ export const WHO_WE_SERVE = [
       "Living with schizophrenia, bipolar disorder, or severe depression who need consistent community support",
     color: "#036135",
     icon: "psychology",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBglChdSYnjAhhK0THu8GS2JZ-Tb4wZSYvKeyU3dBkkpP_bP0Yx_LDRbfZjXxlktwXy_8gaRPl42FuaNvPlfolbCXVTzJQy1zW-2OmUVViKg0Rd2rIiox3W1YciKteQwr8sqSIR2BXfejMw72B4gOonXxe24sP6ayhhYtJcG0sNR79CKv4j4_x3ffo7kDaQjLbsjWYcmHofjUN2NK_AyNsUAX5msXT6XIXygmbwTWGfWLs9vYUfUoEXYmRso-E9TIzOvl2m0bqoisXx",
-  },
+    image:'/images/mental.jpg'  },
   {
     id: "risk-of-hospital",
     title: "People at Risk of Hospital Admission",
