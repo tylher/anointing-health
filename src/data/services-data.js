@@ -1,11 +1,11 @@
 // data/servicesData.js
 import {
-  FaHouseMedical,
   FaBrain,
-  FaPersonCane,
-  FaWheelchair,
-  FaTriangleExclamation,
   FaHandsHoldingCircle,
+  FaHouseMedical,
+  FaPersonCane,
+  FaTriangleExclamation,
+  FaWheelchair,
 } from "react-icons/fa6";
 
 export const servicesData = [
@@ -14,8 +14,8 @@ export const servicesData = [
     title: "Mental Health Outreach",
     description:
       "Proactive, community-based support designed to engage individuals who may be struggling to access traditional services, helping prevent crisis and promote recovery.",
-    imageUrl: "/images/mental.jpg",    
-    href: "/services/mental-health-outreach",
+    imageUrl: "/images/mental.jpg",
+    href: "/services/mental-health",
     isFeatured: true,
     badge: "Core Service",
   },
@@ -24,7 +24,7 @@ export const servicesData = [
     title: "Home Care Services",
     description:
       "Compassionate daily assistance to help you or your loved one live independently and comfortably at home.",
-    imageUrl: '/images/homecare.jpg',
+    imageUrl: "/images/homecare.jpg",
     href: "/services/home-care",
     isFeatured: false,
   },
@@ -33,7 +33,7 @@ export const servicesData = [
     title: "Elderly & Dementia Care",
     description:
       "Specialised, patient-centred care fostering dignity, memory support, and a safe living environment.",
-    imageUrl: '/images/elderlycare.jpg',
+    imageUrl: "/images/elderlycare.jpg",
     href: "/services/elderly-dementia-care",
     isFeatured: false,
   },
@@ -42,7 +42,7 @@ export const servicesData = [
     title: "Disability Support",
     description:
       "Empowering individuals with disabilities to actively participate in their community and achieve personal goals.",
-    imageUrl:'/images/disability-support.jpg',
+    imageUrl: "/images/disability-support.jpg",
     href: "/services/disability-support",
     isFeatured: false,
   },
@@ -51,7 +51,7 @@ export const servicesData = [
     title: "Crisis Prevention",
     description:
       "Responsive interventions designed to de-escalate situations and maintain stability before hospitalisation is needed.",
-    imageUrl: '/images/crisis-prevention.jpg',
+    imageUrl: "/images/crisis-prevention.jpg",
     href: "/services/crisis-prevention",
     isFeatured: false,
   },
@@ -60,15 +60,13 @@ export const servicesData = [
     title: "Carer Support",
     description:
       "Respite and guidance for family members, ensuring they have the strength and resources to continue caring.",
-    imageUrl: '/images/carer-support.jpg',
+    imageUrl: "/images/carer-support.jpg",
     href: "/services/carer-support",
     isFeatured: false,
   },
 ];
 
-
-
-export const filterCategories= [
+export const filterCategories = [
   { id: "all", label: "All Services", filter: "all", colorGroup: "green" },
   {
     id: "home-care",
@@ -111,8 +109,6 @@ export const filterCategories= [
 const PLACEHOLDER_IMG =
   "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=80";
 
-
-
 export const services = [
   {
     id: "home-care",
@@ -132,7 +128,7 @@ export const services = [
       "CQC-regulated staff",
     ],
     link: "#",
-    image: PLACEHOLDER_IMG,
+    image: "/images/home-care.jpg",
   },
   {
     id: "mental-health",
@@ -152,7 +148,7 @@ export const services = [
       "7 days a week availability",
     ],
     link: "#",
-    image: PLACEHOLDER_IMG,
+    image: "/images/mental-outreach2.jpg",
   },
   {
     id: "elderly",
@@ -172,7 +168,7 @@ export const services = [
       "Consistent familiar faces",
     ],
     link: "#",
-    image: PLACEHOLDER_IMG,
+    image: "/images/elderly-care.jpg",
   },
   {
     id: "disability",
@@ -192,7 +188,7 @@ export const services = [
       "Flexible support hours",
     ],
     link: "#",
-    image: PLACEHOLDER_IMG,
+    image: "/images/disability-support2.jpg",
   },
   {
     id: "crisis",
@@ -213,7 +209,7 @@ export const services = [
       "AMHP coordination",
     ],
     link: "#",
-    image: PLACEHOLDER_IMG,
+    image: "/images/crisis-prevention2.jpg",
   },
   {
     id: "carer",
@@ -234,52 +230,52 @@ export const services = [
       "Peer support referrals",
     ],
     link: "#",
-    image: PLACEHOLDER_IMG,
+    image: "/images/carer-support2.jpg",
   },
 ];
 
-export const howItWorksSteps= [
+export const howItWorksSteps = [
   {
     number: "01",
     title: "Referral submitted",
     description:
       "Your journey begins with a simple referral from a GP, social worker, or family member.",
-    image: PLACEHOLDER_IMG,
+    image: '/images/referral-placed.jpg',
   },
   {
     number: "02",
     title: "Rapid acknowledgement",
     description:
       "We respond within 24 hours to confirm receipt and begin coordinating your initial consultation.",
-    image: PLACEHOLDER_IMG,
+    image: '/images/referral-acknowledgement.jpg',
   },
   {
     number: "03",
     title: "Home assessment arranged",
     description:
       "Our clinical lead visits your home to understand your environment, needs, and personal goals.",
-    image: PLACEHOLDER_IMG,
+    image: '/images/home-assessment.jpg',
   },
   {
     number: "04",
     title: "Personalised care plan created",
     description:
       "We co-design a detailed clinical pathway tailored specifically to your health and wellbeing.",
-    image: PLACEHOLDER_IMG,
+    image: '/images/curated-plan.jpg',
   },
   {
     number: "05",
     title: "Regular visits begin",
     description:
       "Your dedicated care team starts scheduled visits, providing consistent and compassionate support.",
-    image: PLACEHOLDER_IMG,
+    image: '/images/regular-visits.jpg',
   },
   {
     number: "06",
     title: "Review, adapt, and plan discharge",
     description:
       "We continually monitor your progress, adjusting the plan to ensure optimal outcomes and independence.",
-    image: PLACEHOLDER_IMG,
+    image: '/images/plan-review.jpg',
   },
 ];
 
@@ -323,8 +319,8 @@ export const comparisonRows = [
 ];
 
 export const heroImages = {
-  left: PLACEHOLDER_IMG,
-  right: PLACEHOLDER_IMG,
+  left: "/images/service-hero-1.jpg",
+  right: "/images/service-hero-2.jpg",
 };
 
 export const ctaBackgroundImage = PLACEHOLDER_IMG;

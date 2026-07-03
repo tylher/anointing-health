@@ -26,7 +26,6 @@ export default function HomePage() {
           <CinematicServices ref={servicesRef} />
         </>
         <HowItWorks />
-        <ComparisonTable />
         <CTASection />
       </main>
     </>

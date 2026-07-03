@@ -54,7 +54,7 @@ export const IMPACT_AREAS = [
   {
     id: "area-admissions",
     image: {
-      src: "https://lh3.googleusercontent.com/aida-public/AB6AXuC_BZJ59gugHSXU2krCSRlCWtMI_2oJNDVz51Eby_v25Vm4vL7vO3ZyC-DQfTVRmXziFnv_sFs14MV2givvu67Zo38-phyi4u3HtzTqRc2673mFsPpURBPSKhVZVm3KV3U4UNTk4ItnEYXiQCTkm5JZHU3TLJ2GdApSoRiJ-Isr_3lF-G_a36i7OEp6igptm8qCb_UndnT_EFzeiyP-aBE9Xi1mwqd-K7tqWVz-sFBL5hLHTNl3-tbz3x9ccD4nakwD9K0C8bvpqIgk",
+      src: "/images/ease-acute.jpg",
       alt: "Reduced Hospital Admissions",
     },
     badgeBg: "bg-primary",
@@ -66,7 +66,7 @@ export const IMPACT_AREAS = [
   {
     id: "area-ae",
     image: {
-      src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCXZFrzHDOi_X_gUiHdQqfcCSwlNQacIGHdgfZXGENieXpVXhO0y7eUzP1PZk6qBg9AR-ayOETCn6RHlYgu5x1FmLVNblvUPVfNv-mFjUAllmbZBqw3-VAqsddA4r5Ptho6zolu3HEa_dWfNaVOFVWNvW68nQsHTSQhZfSEQNyo8shKQf9Qk8Of78OHm0Tu8b3GMcsHgjLdORlXrqrPVGNlRGgdZiQxDXgkD3Ze7CW950oq8qWk2nMFrMUZ3q7tffXIkJeV9ulkEpPz",
+      src: "/images/avoid-crisis.jpg",
       alt: "Lower A&E Demand",
     },
     badgeBg: "bg-secondary-container",
@@ -78,7 +78,7 @@ export const IMPACT_AREAS = [
   {
     id: "area-independence",
     image: {
-      src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBmOW961km01hSfk4bMQyawUSYLZB9lkb7QPWLHz0r_SSDFGbAlrlR9MTs8GDCJhtEEpnoIyeUCaZkH6krYAt9DmpWsyZxD1hdNJOQxIlXLl8SlyJbheQvmz1QtjAbuopU_JSlAF326uDMd-oCHBYX4lQrZ63lskfWFlvHLo2ShbKZWuvj_TILqViOoq9q9hTGHNecl3TR40uA4D2ID6BK3N36G776hZ_WFHBFz2chKjBhJvgjO2fIjjRGnimfDrF1uqmYvGVHbH2",
+      src: "/images/daily-living.jpg",
       alt: "Improved Independence",
     },
     badgeBg: "bg-tertiary-container",
@@ -90,7 +90,7 @@ export const IMPACT_AREAS = [
   {
     id: "area-isolation",
     image: {
-      src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBTwI4ReyFAL-J71Y4Xt5EfTRnJSFf6-K0eGF_Oa3tJQplSbynkU4LivIzUE4jZTzXILp4XVO_I1vzukIZUswiuVi2cEKz4pJ-OhPy5J-S3TsMnpSxF4nM9g_RlCDZiQtnmkB-iNfl8ePJyjkv89BGeHDDr-gAaz0hvKcJ1j0XAGtGPW9ZYfmSZFG6FU_CwQH0lu7hObr_NSVr-Pr5mZY9GkLFu4_nqAp4yWmwi7uT61QMs_jaBv33Q_1y0YOfk4cFEDfyzk97TGQ2z",
+      src: "/images/fostering-connection.jpg",
       alt: "Reduced Isolation",
     },
     badgeBg: "bg-primary",

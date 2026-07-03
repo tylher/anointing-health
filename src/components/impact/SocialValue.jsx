@@ -17,7 +17,7 @@ export default function SocialValue() {
       <div className="max-w-container-max mx-auto max-w-4xl">
         {/* Section intro */}
         <motion.div variants={ITEM} className="text-center mb-16">
-          <h2 className="font-serif font-semibold text-lg text-primary mb-4">
+          <h2 className="font-serif font-semibold text-xl md:text-3xl text-primary mb-4">
             {SOCIAL_VALUE_INTRO.heading}
           </h2>
           <p className="font-sans text-base text-on-surface-variant">

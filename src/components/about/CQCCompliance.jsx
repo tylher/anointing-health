@@ -13,7 +13,7 @@ export default function CQCComplianceSection() {
           <div className="fade-up w-full ">
             <div className="relative aspect-5/5 overflow-hidden rounded-[20px] shadow-lg h-125 w-full">
               <Image
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0_hrNZQFrIal-kDdN951bk_3S8K9ZiFGdavCZDHUthk-q17Z9cuhu9MmxJ8r4aYz5vX06FnEcG4aNLjQ4MXT8NDZbVGkKUwSkLqsDy5SALZ-hdNyqTxRDiQhyDjN0DlDC89tGuJGS8HW0WihyTCW3Zgr1l_SiBaXsksc3kvUD7Yx3mIDfYqrruiOYfSc8-WQ2QcKSh-TpNC75d-aveMTTbcmbaFAUoT_R6VmEUNSX5HgO8p8VeX73x3FCzlGG79Hg86-5bC2elot5"
+                src="/images/about-verified.jpg"
                 alt="Care worker holding clinical care plan"
                 fill
                 className="object-cover"

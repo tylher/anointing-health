@@ -9,6 +9,7 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 import {
   forwardRef,
   useCallback,
@@ -123,8 +124,10 @@ function usePanelProgress(svp, index, total) {
 }
 
 // Active window: content starts entering at 15%, fully in at 80%
+const ACTIVE_WINDOW = [0.2, 0.7];
+
 function useActiveProgress(pp) {
-  return useTransform(pp, [0.1, 0.85], [0, 1], { clamp: true });
+  return useTransform(pp, ACTIVE_WINDOW, [0, 1], { clamp: true });
 }
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
@@ -133,6 +136,7 @@ const CinematicServices = forwardRef(function CinematicServices(_props, ref) {
   const containerRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
   // Deterministic per-panel wipe direction. Math.random() here would run
   // during render and produce a different value on the server vs. the
@@ -158,6 +162,18 @@ const CinematicServices = forwardRef(function CinematicServices(_props, ref) {
     offset: ["start start", "end end"],
   });
 
+  // Cinematic background wash — the sticky viewport's own backdrop bleeds
+  // from one panel's theme colour into the next as you scroll, so the
+  // transition between panels feels like a mood/lighting change rather
+  // than a hard cut. Framer Motion interpolates hex colour strings the
+  // same way it interpolates numbers, so this is just a colour-valued
+  // useTransform keyed to the same panel boundaries as everything else.
+  const sectionBg = useTransform(
+    scrollYProgress,
+    Array.from({ length: TOTAL_PANELS }, (_, i) => i / TOTAL_PANELS),
+    PANEL_THEMES.slice(0, TOTAL_PANELS).map((t) => t.solid),
+  );
+
   useMotionValueEvent(scrollYProgress, "change", (v) => {
     // Mirrors the same index/total → (index+1)/total windows used by
     // usePanelProgress below, so the panel actually on screen is the one
@@ -167,17 +183,29 @@ const CinematicServices = forwardRef(function CinematicServices(_props, ref) {
     );
   });
 
-  const scrollToPanel = useCallback(
-    (i) => {
-      if (!containerRef.current || i === activeIndex) return;
-      const h = containerRef.current.scrollHeight / TOTAL_PANELS;
-      window.scrollTo({
-        top: containerRef.current.offsetTop + h * i,
-        behavior: "smooth",
-      });
-    },
-    [activeIndex],
-  );
+  const scrollToPanel = useCallback((i) => {
+    if (!containerRef.current) return;
+
+    const panelHeight = window.innerHeight;
+
+    const containerTop =
+      containerRef.current.getBoundingClientRect().top + window.scrollY;
+
+    const target = containerTop + panelHeight * i;
+
+    setIsNavigating(true);
+
+    animate(window.scrollY, target, {
+      duration: 0.9,
+      ease: [0.22, 1, 0.36, 1],
+      onUpdate(value) {
+        window.scrollTo(0, value);
+      },
+      onComplete() {
+        setIsNavigating(false);
+      },
+    });
+  }, []);
 
   // Public API for the filter bar (or any other external trigger) to jump
   // to the panel matching a given category. Works on both the desktop
@@ -206,6 +234,26 @@ const CinematicServices = forwardRef(function CinematicServices(_props, ref) {
     scrollToPanel,
   ]);
 
+  // Deep-link support: the Services sub-nav links to
+  // `/services?service=<id>` (see data/site.js). Reading that query
+  // param here and feeding it into the *same* scrollToCategory used by
+  // the dot-nav means a sub-nav click lands exactly where a dot-nav
+  // click would — no separate anchor-jump codepath, and therefore no
+  // risk of landing on an in-between scroll offset where two panels'
+  // clip-paths partially overlap.
+  //
+  // This re-runs whenever `requestedService` changes (clicking a
+  // different sub-nav item while already on this page) or once
+  // `isMobile` resolves to its real value (see the layout effect above),
+  // so we don't jump using the wrong branch's scroll logic.
+  const searchParams = useSearchParams();
+  const requestedService = searchParams.get("service");
+
+  useEffect(() => {
+    if (!requestedService) return;
+    scrollToCategory(requestedService);
+  }, [requestedService, isMobile, scrollToCategory]);
+
   if (isMobile) return <MobileServices />;
 
   return (
@@ -220,15 +268,17 @@ const CinematicServices = forwardRef(function CinematicServices(_props, ref) {
         style={{ height: 4, background: CV.gradient }}
       />
 
-      <div
+      <motion.div
         className="h-screen sticky top-0 overflow-hidden w-full"
-        style={{ maxWidth: 1280, margin: "0 auto" }}
+        style={{ maxWidth: 1280, margin: "0 auto", backgroundColor: sectionBg }}
       >
         {services.map((service, index) => (
           <ServicePanel
             key={service.id}
             service={service}
+            id={service.id}
             index={index}
+            isNavigating={isNavigating}
             theme={PANEL_THEMES[index % PANEL_THEMES.length]}
             direction={directions[index]}
             scrollYProgress={scrollYProgress}
@@ -261,7 +311,7 @@ const CinematicServices = forwardRef(function CinematicServices(_props, ref) {
             />
           ))}
         </nav>
-      </div>
+      </motion.div>
     </section>
   );
 });
@@ -276,6 +326,8 @@ function ServicePanel({
   scrollYProgress,
   total,
   isActive,
+  isNavigating,
+  id,
 }) {
   const pp = usePanelProgress(scrollYProgress, index, total);
   const scrollActive = useActiveProgress(pp);
@@ -284,10 +336,13 @@ function ServicePanel({
   // after the visitor starts scrolling — otherwise the hero sits blank
   // until they've scrolled ~10% into the first panel's window. We animate
   // a separate "entrance" progress from 0 → 1 on mount (only for the
-  // first panel; every other panel's entranceProgress is just a static 1
-  // and never animates) and combine it with the scroll-driven progress,
-  // always using whichever is further along.
-  const entranceProgress = useMotionValue(index === 0 ? 0 : 1);
+  // first panel) and combine it with the scroll-driven progress via
+  // Math.max, always using whichever is further along.
+  //
+  // Every other panel's entranceProgress must stay at its default of 0
+  // (not 1) — Math.max(1, anything ≤ 1) is always 1, which would pin
+  // those panels permanently "fully active" regardless of scroll.
+  const entranceProgress = useMotionValue(0);
 
   useEffect(() => {
     if (index !== 0) return;
@@ -299,9 +354,12 @@ function ServicePanel({
     return () => controls.stop();
   }, [index, entranceProgress]);
 
-  const active = useTransform([entranceProgress, scrollActive], ([e, s]) =>
-    Math.max(e, s),
+  const navValue = useMotionValue(1);
+  const computedActive = useTransform(
+    [entranceProgress, scrollActive],
+    ([e, s]) => Math.max(e, s),
   );
+  const active = isNavigating ? navValue : computedActive;
 
   // Carpet wipe — clipPath driven directly by scroll (or the mount
   // animation, for panel 0)
@@ -309,9 +367,15 @@ function ServicePanel({
   // Subtle scale bloom as carpet opens
   const carpetScale = useTransform(active, [0, 1], [0.67, 1.0]);
 
-  // Image Ken Burns
+  // Image entrance — slides up or down into place (alternating per panel
+  // for rhythm) while the existing Ken Burns scale/opacity still plays
+  // underneath it, so the image arrives with both motion and a slow drift.
+  const imageSlideFrom = index % 2 === 0 ? 70 : -70;
+  const imageY = useTransform(active, [0, 0.6], [imageSlideFrom, 0], {
+    clamp: true,
+  });
   const imageScale = useTransform(active, [0, 1], [1.07, 1.0]);
-  const imageOpacity = useTransform(active, [0, 0.25], [0.5, 1.0]);
+  const imageOpacity = useTransform(active, [0, 0.3], [0, 1.0]);
 
   // Content stagger — each element owns a unique window on the active timeline
   const badgeOpacity = useTransform(active, [0.25, 0.52], [0, 1]);
@@ -339,6 +403,7 @@ function ServicePanel({
         pointerEvents: isActive ? "auto" : "none",
         zIndex: isActive ? 2 : 1,
       }}
+      id={id}
     >
       {/* ── Image column — full viewport height, sits behind carpet ── */}
       <div
@@ -349,7 +414,7 @@ function ServicePanel({
           src={service.image}
           alt={service.title}
           className="w-full h-full object-cover object-center"
-          style={{ scale: imageScale, opacity: imageOpacity }}
+          style={{ scale: imageScale, opacity: imageOpacity, y: imageY }}
         />
       </div>
 

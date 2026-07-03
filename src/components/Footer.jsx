@@ -1,30 +1,26 @@
-import { legalLinks, quickLinks, services, socialLinks } from "@/data/site";
+import { legalLinks, quickLinks, services } from "@/data/site";
+import Image from "next/image";
 import Link from "next/link";
-import { MdLocalHospital, MdVerified } from "react-icons/md";
+import { MdVerified } from "react-icons/md";
 
 export default function Footer() {
   return (
-    <footer className="bg-[#181c20] text-[#eef1f7] py-5 px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)">
+    <footer className="bg-[#898d92] text-white py-5 px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)">
       <div className="max-w-container-max mx-auto">
         {/* TOP GRID */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* BRAND */}
           <div className="flex flex-col gap-6">
-            <div className="flex items-center gap-2">
-              <span className="material-symbols-outlined text-white text-3xl">
-                <MdLocalHospital />
-              </span>
-              <span className="font-serif text-xl font-bold text-white tracking-tight">
-                Anointing Health Care
-              </span>
-            </div>
-
+            <Link href="/" className="flex items-center gap-2 group">
+              <Image src={"/images/logo.png"} width={65} height={65} />
+            </Link>
             <p className="text-[14px] opacity-70 leading-relaxed font-sans">
-              Clinical excellence with a community heart. Empowering
-              independence through compassionate outreach.
+              Providing person-centred care that empowers individuals to live
+              with dignity, independence, and joy within the comfort of their
+              own homes and communities.
             </p>
 
-            {/* SOCIALS */}
+            {/* SOCIALS
             <div className="flex gap-4">
               {socialLinks.map((item, i) => {
                 const Icon = item.icon;
@@ -38,7 +34,7 @@ export default function Footer() {
                   </Link>
                 );
               })}
-            </div>
+            </div> */}
           </div>
 
           {/* QUICK LINKS */}

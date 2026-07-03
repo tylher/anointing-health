@@ -5,7 +5,7 @@ import { MdCall, MdEmail, MdMail, MdPhone, MdSchedule } from "react-icons/md";
 export const HERO = {
   heading: "Let's talk. We're here to help.",
   image: {
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAYwO4OpTuJC1zd_H1ISTkv2bHD7wCDQT5OIe5XtF5iQ3ZPJAILi2kFpknhY8XJ3WAYWYBU5DQMHOtdKCy1N8FBzdXc9_OQrsY0w-FKNtRZ9PF8eNJmuHCJkGaS1E2l0Cjuo22btUIINyIcQZGnWmUj5OM4n9thNHmSJOphC-XPm4MZb5GEn8K3uXcj7Fd6NfzS-4eH9Vjai4Azjbp8eUyclobuXt10vx1YQJkc-xmC6ol-uxe-nPul1nQPxZMRV8YSSIIgAW13s8ap",
+    src: "/images/contact-1.jpg",
     alt: "Friendly healthcare receptionist answering phone call",
   },
 };
@@ -16,7 +16,7 @@ export const PATHWAY_CARDS = [
   {
     id: "support",
     image: {
-      src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAOVZAQq-UVhWALjrE6EgQMClmNLiPPTfaCTLIoKeJ2qjubt4YRZmygmnr3ncdyCwSfnTwDLDikSuJKi5y2uYmFdfvxNiPIhTQ0yOhyNhjGXJ_1gAYIq_q3kMJGUGR5Gak7XDf5s5mn96rLIdbNf8no_XdQ2d1zwhHMI64J3pbrovV0XaZQkUNi4SE60DKkbB43ERERpyOp8-yn6VPbihWfQ6d_1QuZHvtzc8yjNPa130NWapmloi5Xqfy_rwJXPzlbR-7xCxnGxyev",
+      src: "/images/contact-2.jpg",
       alt: "Hand reaching out in support",
     },
     accentColor: "#036135", // primary
@@ -30,7 +30,7 @@ export const PATHWAY_CARDS = [
   {
     id: "refer",
     image: {
-      src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBYWnZqYOZboGCVEoNwGfhQ78pvK_-YjFlIkDobAVO0Z8ZQIIpi9-9MsQ8WXSf0qg8gP9RphzH3k9auwtTs9W-vaXyotoY76kEhqNOGVu6sz1jY9LqMppDW6ezP43hMBb1hPJ30R_0scSD-KnEljt_lVx6YxcLwQM0n9P0sRZzYhhdi3tKM-IN64U2_3tpOonj0iGPNoZqghmKZ0J5LktHNgAulqTL6VP-pKs-p6xr2GzXhQildPfdGuFnG_Mea9jripUkHVn9UGMY3",
+      src: '/images/contact-3.jpg',
       alt: "Healthcare professional reviewing notes",
     },
     accentColor: "#3f6dad", // tertiary-container
@@ -44,7 +44,7 @@ export const PATHWAY_CARDS = [
   {
     id: "partner",
     image: {
-      src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCyxLTDTdH-MKHMq_49tm7LpMlseXXEcd1H8VoK-ip5F285AFiWZqg7-LyuCPtaDxci6DH1bcMqYxX13EfBCWFparsIumXSTLkZGRd0iX4d2wMPL8nMMlZDBT3qGKoGyGDJrgpbja7MeeUpNUtcABVBJTvI4uujj9xxHIXioNIxHZRH9T--uCgMVpCcO2uOGvsP3qPo_JDt58tG6g7bjeZlKEFZwJM_J5o2TJ631xOcpgxyPasM6ZughlGgl3RjvNO4d6EiUcCIFXzj",
+      src: "/images/contact-4.jpg",
       alt: "Professionals in a collaborative meeting",
     },
     accentColor: "#C9961A",

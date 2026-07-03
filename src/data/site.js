@@ -1,10 +1,49 @@
 import { FaFacebookF, FaInstagram, FaShareAlt } from "react-icons/fa";
+import {
+  MdAccessibilityNew,
+  MdHealthAndSafety,
+  MdPeopleAlt,
+  MdPsychology,
+} from "react-icons/md";
 
 /* ─── Navigation ──────────────────────────────────────────── */
 export const navLinks = [
   { label: "Home", href: "/" },
   { label: "Who We Are", href: "/about" },
-  { label: "Services", href: "/services" },
+  {
+    label: "Services",
+    href: "/services",
+    // `id` must match a `services-data.js` → `services[].id` value —
+    // that's what CinematicServices uses to pick which panel to jump to.
+    subLinks: [
+      {
+        label: "Home Care",
+        href: "/services?service=home-care",
+        id: "home-care",
+      },
+      {
+        label: "Mental Health Outreach",
+        href: "/services/mental-health",
+        id: "mental-health",
+      },
+      {
+        label: "Elderly & Dementia Care",
+        href: "/services?service=elderly",
+        id: "elderly",
+      },
+      {
+        label: "Disability Support",
+        href: "/services?service=disability",
+        id: "disability",
+      },
+      {
+        label: "Crisis Prevention",
+        href: "/services?service=crisis",
+        id: "crisis",
+      },
+      { label: "Carer Support", href: "/services?service=carer", id: "carer" },
+    ],
+  },
   { label: "Our Approach", href: "/our-approach" },
   { label: "Impact", href: "/impact" },
   { label: "Contact", href: "/contact" },
@@ -39,7 +78,7 @@ export const whoWeHelpTabs = [
   {
     id: "individuals",
     label: "Individuals",
-    imageUrl: '/images/WWH1.jpg',
+    imageUrl: "/images/WWH1.jpg",
     imageAlt: "Individuals Support",
     description:
       "Adults experiencing mental health challenges, isolation, or difficulty accessing traditional services.",
@@ -56,7 +95,7 @@ export const whoWeHelpTabs = [
   {
     id: "families",
     label: "Families & Carers",
-    imageUrl: '/images/WWH2.jpg',
+    imageUrl: "/images/WWH2.jpg",
     imageAlt: "Families and Carers Support",
     description: "We support the people who support others.",
     checkItems: [
@@ -71,7 +110,7 @@ export const whoWeHelpTabs = [
   {
     id: "professionals",
     label: "Professionals & Referrers",
-    imageUrl: '/images/WWH3.jpg',
+    imageUrl: "/images/WWH3.jpg",
     imageAlt: "Professionals and Referrers",
     description:
       "We work with NHS, local authority, and voluntary sector partners.",
@@ -125,17 +164,17 @@ export const WHO_WE_SERVE = [
     description:
       "Living with schizophrenia, bipolar disorder, or severe depression who need consistent community support",
     color: "#036135",
-    icon: "psychology",
-    image:'/images/mental.jpg'  },
+    icon: MdPsychology,
+    image: "/images/mental.jpg",
+  },
   {
     id: "risk-of-hospital",
     title: "People at Risk of Hospital Admission",
     description:
       "Those experiencing escalating crisis who could benefit from intensive outreach to prevent acute admission",
     color: "#C9961A",
-    icon: "emergency_home",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCkNs3sDA3YgjLSTbQIEnEje-aSmh6NqwnvAkPB9o4mHqZ4_B-m-UK_kfCkQbQWsRMWO57X4MwPvCe7eIIekPDd7r-lxcuWUQNPiYzxANyY5XWFzhJW1yVHNX_EAIG79X_Ck3eyxOWxsLrvLmBsN4iC91lCIx0XhEc_z72LqPUwUw53XTXlEmhK7IoUZbku3RbUGIS3m60VkpVK5mxCz8DmUB9s685FkXK9YFGE20GuFFOjrHfX3tq-PVLGbGpe1Q0pBq9OsyKPzKyA",
+    icon: MdHealthAndSafety,
+    image: "/images/approach-3.jpg",
   },
   {
     id: "isolated-individuals",
@@ -143,9 +182,8 @@ export const WHO_WE_SERVE = [
     description:
       "Older adults or those in rural areas who have disengaged from care or have limited social connections",
     color: "#235492",
-    icon: "person_off",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDx1XUdyPyp5t0D_XHTNfx6QQzAuTVaoIHYeRqGIYiAXKyiECfIj11PdsxL6uhgGrPt3cKmi_4gs2I-Jj9lxP9KiFymrwk3AKZULqdIciS2yVjA_SwrhBNBbm2rdM1EHuFKaWjoLWsQsDFJ6phMIvihq7iV1Nxkx81_j5ng",
+    icon: MdPeopleAlt,
+    image: "/images/approach-2.jpg",
   },
   {
     id: "personal-care",
@@ -153,9 +191,8 @@ export const WHO_WE_SERVE = [
     description:
       "Adults who need day-to-day assistance with personal care, medication, and daily living tasks",
     color: "#036135",
-    icon: "front_hand",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCnPvtwc8_Kf0ExQ-Zr4na46WviI2nvT6UC3cEmRM_liiPwZxrZmEU9nIdHvIJL_3VyIb5rtxsWM65_KQKkJ0nQDPu7TPhWDFejQZwb2pMXjyXzt0M1CmjAap1P__bIK_MyvmZi72MGhJJ1-hB0wX14uCiBtoR5efJXlG5B0nX4xM7PV5Mq06jUVsc892SMlq9GkrUIumbRQYU4LrJhAPWzR-4hwb4OmuWVunJMk7hdagpff7TzRmMleIwlyjEZ9lhhoLMus5RAUe0I",
+    icon: MdAccessibilityNew,
+    image: "/images/approach-4.jpg",
   },
 ];
 
@@ -285,8 +322,7 @@ export const HERO = {
   heading: "Whoever you are, we're here",
   subheading:
     "We support adults of all backgrounds who are finding it hard to manage their mental health, live independently, or access mainstream services. You don't need to be in crisis to reach out.",
-  heroBannerImage:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuAOdURIR30RKQSLMiiGNveecAsRKaSgxlm6jcNcPV6l-d_w069_d8F9uWVA5I_WsSNfVFxiT-jU9ABzwV6Qwqr6f2EqwTVwXO9GbZqcIHJk9beH91l-OY-4D2rZweuGbLZ9c4dZvNF4Uc4Tz6CLI6awhA28ZeneIHG5-cO0cL5JEjoR6mhKTCfsEjzsAWvridV6DTG2ntxSTVqk_gdv_EK0Ca_wL5L7aNSgMmTl5a5IRJfdyMOw0vMYoTRnVLifASGcTkN2uXPQUUd0",
+  heroBannerImage: "/images/approach-1.jpg",
   ctaPrimary: { label: "Am I eligible?", href: "#eligibility" },
   ctaSecondary: { label: "Talk to us first", href: "#contact" },
   floatingChip: "Every story matters",

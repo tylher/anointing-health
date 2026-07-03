@@ -49,7 +49,7 @@ function ServeCard({ title, description, color, icon:Icon, image }) {
 
 export default function WhoWeServeSection() {
   return (
-    <section className="py-10 bg-surface-container-low">
+    <section className="py-10 bg-surface-container-low px-7 md:px-20">
       <div className="max-w-[1280px] mx-auto ">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
             {WHO_WE_SERVE.map((item) => (

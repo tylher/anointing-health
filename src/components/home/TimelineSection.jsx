@@ -36,8 +36,7 @@ export default function TimelineSection() {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-fixed w-full"
         style={{
-          backgroundImage:
-            "url('https://lh3.googleusercontent.com/aida/AP1WRLsZowYYqUul8LU9WdeKDDMwqaY7dimgl3sl1d5nliu6x0r5s9ICR1MTZakI7yhKxOAnFLoziE6bFpb2qV-nrb8LkYKhahX02p-ikVq8iCrMgAOxQhQdMCC3b-IA_-9-gxL_r5XJZIusChYfzxV-z1af5Clnx2xEysp8M7Hn9Y8Bx-jGkPVoFe8TFo2Jh3fcDXfiGVe9cP4vC3t8AaznKpAJqX-dPX2ft6j39sK0PubzKx3Ml8qgj7mJX75G')",
+          backgroundImage: "url('/images/JWU1.jpg')",
         }}
       >
         <div className="absolute inset-0 bg-[#00522b]/82 opacity-40 backdrop-blur-3xl"></div>

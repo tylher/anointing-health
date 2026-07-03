@@ -1,7 +1,18 @@
 import { FaArrowTrendUp } from "react-icons/fa6";
 import { GiNotebook } from "react-icons/gi";
-import { GrGrow } from "react-icons/gr";
-import { MdFamilyRestroom, MdHealthAndSafety, MdShield } from "react-icons/md";
+import {
+  MdExplore,
+  MdFamilyRestroom,
+  MdFavorite,
+  MdGroups,
+  MdHealthAndSafety,
+  MdMedicalServices,
+  MdShield,
+  MdVerified,
+  MdVolunteerActivism,
+  MdWorkspacePremium,
+} from "react-icons/md";
+
 import { PiPlantLight } from "react-icons/pi";
 
 export const companyInfo = {
@@ -29,14 +40,14 @@ export const badges = [
 export const collageImages = [
   {
     id: 1,
-    src: "https://lh3.googleusercontent.com/aida/AP1WRLtWWta6V3jlxkU9t287bBVkOoPxgqcrojZVaiPjYxHwVAjw8I_kDu2pAeSSe0dbxYT_bhDNbIOlLGYCBHAex9gQJv3jY2Fc-h1JHgEXER2C0pOLQ-ALYLMLNOu-CTeX5Cj_05ggO5YwuX2umj31gLC71-9iuTmCdEUFFzQejbrRns3mjGY-nu6aP99bU3JDIMIFVkcgO2xy13CKiYs-X_fxGc6bpb10hp-2ZsPIOFzJROu6ngddwEAzEHU",
+    src: "/images/about-hero-2.jpg",
     alt: "Healthcare professionals standing together",
     className:
       "absolute right-[10%] top-[10%] w-[55%] h-[65%] rounded-[28px] z-20",
   },
   {
     id: 2,
-    src: "https://lh3.googleusercontent.com/aida/AP1WRLtSBsDEyK9ptCYoGrwOq9FLTkLEGcCIdnWicthUpUQiCAuhdzYey-RsnPqrPz-wT-Ifb6Qb5ob-WJonQgSTrO545YZbI4l3kZ5kUWq0w4Gg2esLb_VmazAP_00KH9Io3sl09DX9gCS0aQRh-gIYHUs0O1ANXkI1mqMw3jmZiGK-IsbkHPhzuhOy6kCnd-th-pN12GZ0Mh04OgW4hiRuLU_x3Voplixlr4kHFwUS43SMHn43mI0fYjokrykJ",
+    src: "/images/about-hero-4.jpg",
     alt: "Care worker supporting elderly woman",
     className:
       "absolute left-[5%] top-[5%] w-[40%] h-[45%] rounded-[20px] z-30 -translate-y-6 border-4 border-white",
@@ -44,61 +55,67 @@ export const collageImages = [
   },
   {
     id: 3,
-    src: "https://lh3.googleusercontent.com/aida/AP1WRLtMjKHBbxKSisysL4C3uLbin7pSlTW0Hd7MHTkhzfr9c2HRM5dp_1EL84MyHXxf1PtQ1UlHXC10QpxAcpNJl8H6xosB-zTI-q8FcXzgNPUBXnaMehFG1Zf5ei9sk2Q8Dkrzk43ejvyTIN4rXHhMhfeYK1T__lFtqWbHtSC4QAQnHEz8jFwet95g78gRzgipdekrubZiC458LhSnEf-UKQI_KdF7ERJ71PSy9kAWK3uH_PNm8FLVwp2myXJQ",
+    src: "/images/about-hero-3.jpg",
     alt: "Hands writing on clipboard",
     className:
       "absolute left-[35%] top-[35%] w-[35%] h-[35%] rounded-full z-40 border-[5px] border-white",
   },
   {
     id: 4,
-    src: "https://lh3.googleusercontent.com/aida/AP1WRLtGGNwbeU27T7xSDuYiQS3w-MUFHX5DqsJPMn5a2dbkEMYFppofA1G4XmbsREgWmLDKnrteBwYoi3GL0omfVTKyLUdlMKkWTxY_sDSuNZ7h01vszbhlNu10z7O680xXZ7Xy9HA75GMjbXNOykVmyUjWC0Gr3Vc24Uqx2i2kfn1xfSqNB7t7gBb2vzwoF_x4rOvOL9yPHwB_Clw9QCJo6nv8B7dP3URmSXb-C7POyagB_-BMNHIDxa4AoOZ2",
+    src: "/images/about-hero-1.jpg",
     alt: "Administrative staff working together",
     className:
       "absolute left-[10%] bottom-[5%] w-[45%] h-[35%] rounded-[20px] z-10",
   },
   {
     id: 5,
-    src: "https://lh3.googleusercontent.com/aida/AP1WRLvXKMEn9E9xYIk82fxdl7DwAWAE0n34il_y_xGKcktXYU_yM1pyvQKoYot_vwUIKkv7Up4TlfCOojnTXkzrr6V-mnqaYEW4SVhI0jiX9C705WKLMKGQva6Q0Om2_0xMJslAGnK_MjHntXKJAbnX5oFMxIsRYxR8XT8vZAYeI2XQg7fIVqKMn6nLFw3yjmLAT7nt2Ir4ZfTsG-OPz2yzmrcQyPHBgrdPpQs8wQLhHGGAERb14IR9QiPLeJ0",
+    src: "/images/about-hero-5.jpg",
     alt: "Service user enjoying time with care staff",
     className:
       "absolute right-[5%] bottom-[15%] w-[30%] h-[25%] rounded-full z-30",
   },
 ];
 
+// Photography here was doing more harm than good — three cropped,
+// generically-lit stock frames (the `aida-public` URLs) squeezed into a
+// 140px strip don't say anything specific about this brand, and any one
+// of them could belong to any other healthcare site. A small set of line
+// icons, tinted with each card's own accent, reads as considered and
+// on-brand instead, scales cleanly at any size, and never breaks if an
+// external image host goes away.
 export const valueCards = [
   {
     title: "Our Mission",
     accent: "bg-primary",
-    imageBg: "bg-primary/10",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCUccogXLke26ZYlgAiP1PUAv56qzTLw7TfQxo3h-JnyWvz8_8Qe50KInWI03IqKmSw95exS9m3pxtIqQONEGeHiGvYe4ejnOvHPqv_iCYBSUc7HcjIDpQHYsBkck3GkcvlurRWjkeRGL1XqjCeVG6mrQ4y7LARpTdtHlvwMrBUN5wUgms4CuL314tT27DVrexHfkhPAHirtmQpM5K_sfiGTbyZiaqQLOysEmq3SkdRZ0lFjY1QZVGMKtFrsOE95BXIO5v4SMV_6BYL",
+    accentText: "text-primary",
+    tint: "bg-primary/10",
+    icon: MdVolunteerActivism,
     content:
       "To provide exceptional, person-centred care that empowers individuals to live with dignity, independence, and joy within the comfort of their own homes and communities.",
   },
   {
     title: "Our Vision",
     accent: "bg-tertiary",
-    imageBg: "bg-tertiary-container/10",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuC7F485huEAF-Dp8GewuFx0UqgUfKSTkqupNAa7vdJzrexhwC8ZXLntGGSAHzK2cwk2Ev9eyk7Y_XlWFlaNP1asLONhO-MaHScs-eJTPmaeQA-YkFS2GDwVIIhTlgEj6bVPcmHpeQoTLBvzuV3dqShawhjFCXUeT_g84YMAY6Re2NpsNlAHrDuGvPO7zKURhoKHktGrKHp9IrhNGbFNW8XSRDDVWkuocsmzNqKujsww29n3Hvz0bHHCR7mTc31c5yHZLZ7-4vy4r9bS",
+    accentText: "text-tertiary",
+    tint: "bg-tertiary-container/15",
+    icon: MdExplore,
     content:
       "To be the UK's most trusted partner in community health, setting the gold standard for compassionate outreach and clinical excellence in home-based care.",
   },
   {
     title: "Our Values",
     accent: "bg-[#C9961A]",
-    imageBg: "bg-secondary-container/20",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCz71kRSYJTjWvBd4QvNpnCoeWUiBBWg1ifg_q6N7dp_skq2ia95opInc1M6CwCUNuE73__kaDhD24Bxc_cvnNMba2mkY8ePCKsRA-uOwON3pYZNTIZUF_394Vw4KpCg7VKctrY5dspR83iYWazUIyhcDeeOnuLIBBZDw2OmEzIjFkVCb0LdvDqudoH0Nmt4_82yu9pu9lGPsg1xIMet4x8rnSTub6djehdMyYY23UW88pkrVuGnsFVTosIf_h0NdhKxLwk36knMUtF",
+    accentText: "text-[#C9961A]",
+    tint: "bg-secondary-container/20",
+    icon: MdWorkspacePremium,
     values: [
-      "Compassion First",
-      "Integrity & Transparency",
-      "Community Rooted",
-      "Clinical Excellence",
+      { label: "Compassion First", icon: MdFavorite },
+      { label: "Integrity & Transparency", icon: MdVerified },
+      { label: "Community Rooted", icon: MdGroups },
+      { label: "Clinical Excellence", icon: MdMedicalServices },
     ],
   },
 ];
-
 export const clinicalApproach = {
   image:
     "https://lh3.googleusercontent.com/aida-public/AB6AXuAUJzBvwMpuCqYD7LtfXK6VsyixJjIpCWbU0_Sdbvkap9A9ABwaFvnHGMwzBsuDin4JUXg8Nsm9Tcy878_2Gz4RBfi4_mLP9vx2IS3qN4T1ZKUUALRgy7VYcd-3LWBnvDB9VLfOB2LR-tiiu1uzkk5SBW_ezpJyStad0kzsxQahw9KCTjH8U3vco4sOaZlUy7Gi34zTkKv0OD-6Aseiohxp4-PvPIgPHEo-5RTDcLztZWfcn33aSechOPU1yVwbhhiK4Ds0R6ZSacSJ",
