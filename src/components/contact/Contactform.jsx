@@ -5,9 +5,11 @@ import { motion } from "framer-motion";
 import { FORM_ROLE_OPTIONS } from "../../data/contact-data";
 import { ITEM } from "./UseReveal";
 
-// Shared field styles — centralised so a design-token update touches one place
 const fieldClass =
   "w-full bg-on-primary border border-outline-variant rounded-lg px-4 py-2 transition-all outline-none focus:ring-2 focus:ring-primary focus:border-primary font-sans text-on-background";
+
+// Point this at wherever contact-handler.php actually lives.
+const CONTACT_ENDPOINT = "https://anointinghealthcare.co.uk/contact-handler.php";
 
 function Field({ label, children }) {
   return (
@@ -29,15 +31,47 @@ export default function ContactForm() {
     message: "",
   });
 
+  // idle | submitting | success | error
+  const [status, setStatus] = useState("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
   const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
-  const handleSubmit = () => {
-    // Wire up to your API / form handler here
-    console.log("Contact form submitted:", form);
+  const handleSubmit = async () => {
+    setStatus("submitting");
+    setErrorMsg("");
+
+    try {
+      const res = await fetch(CONTACT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(
+          data.error || "Something went wrong. Please try again.",
+        );
+      }
+
+      setStatus("success");
+      setForm({
+        name: "",
+        email: "",
+        phone: "",
+        role: FORM_ROLE_OPTIONS[0],
+        message: "",
+      });
+    } catch (err) {
+      setStatus("error");
+      setErrorMsg(err.message || "Network error. Please try again.");
+    }
   };
 
   return (
-    <div className="bg-surface-container-lowest p-8 rounded-xl border border-primary/10 shadow-[0_4px_20px_rgba(3,97,53,0.05)]">
+    <div className="bg-surface-container-lowest p-8 rounded-xl border border-primary/10 shadow-[0_4px_20px_rgba(3,97,53,0.05)]" id='contact-form'>
       <motion.h2
         variants={ITEM}
         className="font-serif font-bold text-xl md:text-3xl  text-primary mb-6"
@@ -52,6 +86,7 @@ export default function ContactForm() {
             value={form.name}
             onChange={set("name")}
             className={fieldClass}
+            required
           />
         </Field>
 
@@ -68,6 +103,7 @@ export default function ContactForm() {
               value={form.email}
               onChange={set("email")}
               className={fieldClass}
+              required
             />
           </div>
           <div>
@@ -103,19 +139,30 @@ export default function ContactForm() {
             value={form.message}
             onChange={set("message")}
             className={`${fieldClass} resize-none`}
+            required
           />
         </Field>
+
+        {status === "error" && (
+          <p className="text-sm text-red-600 font-ui">{errorMsg}</p>
+        )}
+        {status === "success" && (
+          <p className="text-sm text-primary font-ui">
+            Thanks — your message has been sent. We'll be in touch soon.
+          </p>
+        )}
 
         <motion.div variants={ITEM}>
           <motion.button
             type="button"
             onClick={handleSubmit}
-            className="w-full bg-primary text-on-primary font-ui text-sm font-medium py-3 rounded-lg"
+            disabled={status === "submitting"}
+            className="w-full bg-primary text-on-primary font-ui text-sm font-medium py-3 rounded-lg disabled:opacity-60 disabled:cursor-not-allowed"
             whileHover={{ backgroundColor: "#2a7a4b" }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.2 }}
           >
-            Send Message
+            {status === "submitting" ? "Sending..." : "Send Message"}
           </motion.button>
         </motion.div>
       </div>

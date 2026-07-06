@@ -8,9 +8,8 @@ import { motion } from "framer-motion";
  * trick with actual focus/value state, so the label position, size, and
  * color are driven by Framer Motion.
  */
-export default function FloatingLabelInput({ id, label, type = "text", as = "input", rows }) {
+export default function FloatingLabelInput({ id, label, type = "text", as = "input", rows, handleChange,value }) {
   const [focused, setFocused] = useState(false);
-  const [value, setValue] = useState("");
   const isActive = focused || value.length > 0;
 
   const sharedClassName = `w-full border-0 border-b-2 bg-transparent px-0 py-2 font-sans text-on-background focus:ring-0 transition-colors ${
@@ -24,7 +23,7 @@ export default function FloatingLabelInput({ id, label, type = "text", as = "inp
           id={id}
           rows={rows}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={handleChange}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           className={sharedClassName}
@@ -34,7 +33,7 @@ export default function FloatingLabelInput({ id, label, type = "text", as = "inp
           id={id}
           type={type}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={handleChange}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           className={sharedClassName}

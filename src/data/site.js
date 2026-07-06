@@ -90,7 +90,7 @@ export const whoWeHelpTabs = [
       "Disengaged from existing care",
     ],
     ctaLabel: "Learn about individual support",
-    ctaHref: "#",
+    ctaHref: "/services",
   },
   {
     id: "families",
@@ -105,7 +105,7 @@ export const whoWeHelpTabs = [
       "Signposting to carer resources",
     ],
     ctaLabel: "Explore carer resources",
-    ctaHref: "#",
+    ctaHref: "/services",
   },
   {
     id: "professionals",
@@ -121,25 +121,46 @@ export const whoWeHelpTabs = [
       "Integrated Care Boards",
     ],
     ctaLabel: "Information for referrers",
-    ctaHref: "#",
+    ctaHref: "/services",
   },
 ];
 
 export const quickLinks = [
-  { label: "Home", href: "#" },
-  { label: "Services", href: "#" },
-  { label: "Who We Help", href: "#" },
-  { label: "About", href: "#" },
-  { label: "Referrals", href: "#" },
-  { label: "Impact", href: "#" },
+  { label: "Home", href: "/" },
+  { label: "Services", href: "/services" },
+  { label: "Our Approach", href: "/our-approach" },
+  { label: "About", href: "/about" },
+  { label: "Referrals", href: "/referral" },
+  { label: "Impact", href: "/impact" },
 ];
 
 export const services = [
-  { label: "Home Care", href: "#" },
-  { label: "Mental Health Outreach", href: "#" },
-  { label: "Elderly Care", href: "#" },
-  { label: "Disability Support", href: "#" },
-  { label: "Crisis Prevention", href: "#" },
+  {
+    label: "Home Care",
+    href: "/services?service=home-care",
+    id: "home-care",
+  },
+  {
+    label: "Mental Health Outreach",
+    href: "/services/mental-health",
+    id: "mental-health",
+  },
+  {
+    label: "Elderly & Dementia Care",
+    href: "/services?service=elderly",
+    id: "elderly",
+  },
+  {
+    label: "Disability Support",
+    href: "/services?service=disability",
+    id: "disability",
+  },
+  {
+    label: "Crisis Prevention",
+    href: "/services?service=crisis",
+    id: "crisis",
+  },
+  { label: "Carer Support", href: "/services?service=carer", id: "carer" },
 ];
 
 export const legalLinks = [
@@ -324,7 +345,7 @@ export const HERO = {
     "We support adults of all backgrounds who are finding it hard to manage their mental health, live independently, or access mainstream services. You don't need to be in crisis to reach out.",
   heroBannerImage: "/images/approach-1.jpg",
   ctaPrimary: { label: "Am I eligible?", href: "#eligibility" },
-  ctaSecondary: { label: "Talk to us first", href: "#contact" },
+  ctaSecondary: { label: "Talk to us first", href: "/contact" },
   floatingChip: "Every story matters",
 };
 

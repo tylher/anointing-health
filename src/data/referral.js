@@ -102,15 +102,34 @@ export const FORM_TABS = [
   { label: "Clinical", active: false },
 ];
 
-export const FORM_FIELDS = [
-  { id: "firstName", label: "First Name", type: "text", half: true },
-  { id: "lastName", label: "Last Name", type: "text", half: true },
-  { id: "email", label: "Professional Email", type: "email", half: false },
-  { id: "org", label: "Organization / Trust", type: "text", half: false },
+// Each entry is one step in the form. `fields` drives both the tab label
+// and which FloatingLabelInput fields render for that step.
+export const FORM_STEPS = [
+  {
+    id: "referrer",
+    label: "Referrer Details",
+    fields: [
+      { id: "referrerName", label: "Your Full Name", type: "text", half: true, required: true },
+      { id: "referrerRelationship", label: "Relationship to Patient", type: "text", half: true, required: true },
+      { id: "referrerEmail", label: "Your Email", type: "email", half: true, required: true },
+      { id: "referrerPhone", label: "Your Phone", type: "tel", half: true, required: true },
+    ],
+  },
+  {
+    id: "patient",
+    label: "Patient Details",
+    fields: [
+      { id: "patientName", label: "Patient Full Name", type: "text", half: true, required: true },
+      { id: "patientDob", label: "Patient Date of Birth", type: "date", half: true, required: true },
+      { id: "patientAddress", label: "Patient Address", type: "text", half: false, required: true },
+      { id: "patientNeeds", label: "Care Needs / Condition", type: "text", half: false, required: true },
+    ],
+  },
 ];
 
+// Rendered on the final step, below that step's fields
 export const NOTES_FIELD = {
   id: "notes",
-  label: "Brief Clinical Summary",
+  label: "Additional Notes (optional)",
   rows: 4,
 };

@@ -168,5 +168,5 @@ export const CTA = {
   eyebrow: "Commissioned & Trusted By",
   heading: "Want to discuss a commissioning partnership?",
   linkLabel: "Let's build better care pathways together",
-  href: "#",
+  href: "/contact",
 };

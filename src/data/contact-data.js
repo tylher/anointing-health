@@ -25,7 +25,7 @@ export const PATHWAY_CARDS = [
     linkLabel: "Start here",
     linkColor: "text-primary",
     linkHoverColor: "text-surface-tint",
-    href: "#",
+    href: "#contact-form",
   },
   {
     id: "refer",
@@ -39,7 +39,7 @@ export const PATHWAY_CARDS = [
     linkLabel: "Submit a referral",
     linkColor: "text-tertiary-container",
     linkHoverColor: "text-primary",
-    href: "#",
+    href: "/referral",
   },
   {
     id: "partner",
@@ -53,7 +53,7 @@ export const PATHWAY_CARDS = [
     linkLabel: "Get in touch",
     linkColor: "text-[#C9961A]",
     linkHoverColor: "text-primary",
-    href: "#",
+    href: "#contact-form",
   },
 ];
 

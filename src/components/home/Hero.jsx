@@ -159,18 +159,13 @@ export default function Hero() {
           {/* CTA buttons */}
           <motion.div variants={fadeUp} className="flex flex-wrap gap-4">
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <Link href="#support" className="btn-primary">
+              <Link href="/contact" className="btn-primary">
                 Get Support <MdArrowForward />
               </Link>
             </motion.div>
             <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <Link href="#refer" className="btn-secondary">
+              <Link href="/referral" className="btn-secondary">
                 Refer Someone
-              </Link>
-            </motion.div>
-            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-              <Link href="#partner" className="btn-ghost">
-                Partner With Us
               </Link>
             </motion.div>
           </motion.div>

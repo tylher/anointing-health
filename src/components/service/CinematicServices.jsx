@@ -12,6 +12,7 @@ import {
 import { useSearchParams } from "next/navigation";
 import {
   forwardRef,
+  Suspense,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -132,191 +133,222 @@ function useActiveProgress(pp) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
-const CinematicServices = forwardRef(function CinematicServices(_props, ref) {
-  const containerRef = useRef(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [isMobile, setIsMobile] = useState(false);
-  const [isNavigating, setIsNavigating] = useState(false);
+const CinematicServicesInner = forwardRef(
+  function CinematicServicesInner(_props, ref) {
+    const containerRef = useRef(null);
+    const [activeIndex, setActiveIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isNavigating, setIsNavigating] = useState(false);
 
-  // Deterministic per-panel wipe direction. Math.random() here would run
-  // during render and produce a different value on the server vs. the
-  // client, which is a hydration mismatch waiting to happen. Cycling by
-  // index keeps the variety but is stable across renders.
-  const directions = useMemo(
-    () => services.map((_, i) => DIRECTIONS[i % DIRECTIONS.length]),
-    [],
-  );
-
-  // useLayoutEffect (not useEffect) so this resolves before the browser
-  // paints — avoids a frame of the heavy desktop layout flashing on phones
-  // before swapping to <MobileServices />.
-  useLayoutEffect(() => {
-    const check = () => setIsMobile(window.innerWidth <= 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-
-  // Cinematic background wash — the sticky viewport's own backdrop bleeds
-  // from one panel's theme colour into the next as you scroll, so the
-  // transition between panels feels like a mood/lighting change rather
-  // than a hard cut. Framer Motion interpolates hex colour strings the
-  // same way it interpolates numbers, so this is just a colour-valued
-  // useTransform keyed to the same panel boundaries as everything else.
-  const sectionBg = useTransform(
-    scrollYProgress,
-    Array.from({ length: TOTAL_PANELS }, (_, i) => i / TOTAL_PANELS),
-    PANEL_THEMES.slice(0, TOTAL_PANELS).map((t) => t.solid),
-  );
-
-  useMotionValueEvent(scrollYProgress, "change", (v) => {
-    // Mirrors the same index/total → (index+1)/total windows used by
-    // usePanelProgress below, so the panel actually on screen is the one
-    // marked active (and therefore the one receiving clicks).
-    setActiveIndex(
-      Math.max(0, Math.min(TOTAL_PANELS - 1, Math.floor(v * TOTAL_PANELS))),
+    // Deterministic per-panel wipe direction. Math.random() here would run
+    // during render and produce a different value on the server vs. the
+    // client, which is a hydration mismatch waiting to happen. Cycling by
+    // index keeps the variety but is stable across renders.
+    const directions = useMemo(
+      () => services.map((_, i) => DIRECTIONS[i % DIRECTIONS.length]),
+      [],
     );
-  });
 
-  const scrollToPanel = useCallback((i) => {
-    if (!containerRef.current) return;
+    // useLayoutEffect (not useEffect) so this resolves before the browser
+    // paints — avoids a frame of the heavy desktop layout flashing on phones
+    // before swapping to <MobileServices />.
+    useLayoutEffect(() => {
+      const check = () => setIsMobile(window.innerWidth <= 768);
+      check();
+      window.addEventListener("resize", check);
+      return () => window.removeEventListener("resize", check);
+    }, []);
 
-    const panelHeight = window.innerHeight;
-
-    const containerTop =
-      containerRef.current.getBoundingClientRect().top + window.scrollY;
-
-    const target = containerTop + panelHeight * i;
-
-    setIsNavigating(true);
-
-    animate(window.scrollY, target, {
-      duration: 0.9,
-      ease: [0.22, 1, 0.36, 1],
-      onUpdate(value) {
-        window.scrollTo(0, value);
-      },
-      onComplete() {
-        setIsNavigating(false);
-      },
+    const { scrollYProgress } = useScroll({
+      target: containerRef,
+      offset: ["start start", "end end"],
     });
-  }, []);
 
-  // Public API for the filter bar (or any other external trigger) to jump
-  // to the panel matching a given category. Works on both the desktop
-  // scroll-jacked layout and the mobile stacked layout.
-  const scrollToCategory = useCallback(
-    (filter) => {
-      const targetIndex =
-        !filter || filter === "all"
-          ? 0
-          : services.findIndex((s) => matchesFilter(s, filter));
-      const idx = targetIndex === -1 ? 0 : targetIndex;
+    // Cinematic background wash — the sticky viewport's own backdrop bleeds
+    // from one panel's theme colour into the next as you scroll, so the
+    // transition between panels feels like a mood/lighting change rather
+    // than a hard cut. Framer Motion interpolates hex colour strings the
+    // same way it interpolates numbers, so this is just a colour-valued
+    // useTransform keyed to the same panel boundaries as everything else.
+    const sectionBg = useTransform(
+      scrollYProgress,
+      Array.from({ length: TOTAL_PANELS }, (_, i) => i / TOTAL_PANELS),
+      PANEL_THEMES.slice(0, TOTAL_PANELS).map((t) => t.solid),
+    );
 
-      if (isMobile) {
-        document
-          .getElementById(`service-panel-${services[idx].id}`)
-          ?.scrollIntoView({ behavior: "smooth", block: "start" });
-      } else {
-        scrollToPanel(idx);
-      }
-    },
-    [isMobile, scrollToPanel],
-  );
+    useMotionValueEvent(scrollYProgress, "change", (v) => {
+      // Mirrors the same index/total → (index+1)/total windows used by
+      // usePanelProgress below, so the panel actually on screen is the one
+      // marked active (and therefore the one receiving clicks).
+      setActiveIndex(
+        Math.max(0, Math.min(TOTAL_PANELS - 1, Math.floor(v * TOTAL_PANELS))),
+      );
+    });
 
-  useImperativeHandle(ref, () => ({ scrollToCategory, scrollToPanel }), [
-    scrollToCategory,
-    scrollToPanel,
-  ]);
+    const REVEAL_POINT = 0.72;
 
-  // Deep-link support: the Services sub-nav links to
-  // `/services?service=<id>` (see data/site.js). Reading that query
-  // param here and feeding it into the *same* scrollToCategory used by
-  // the dot-nav means a sub-nav click lands exactly where a dot-nav
-  // click would — no separate anchor-jump codepath, and therefore no
-  // risk of landing on an in-between scroll offset where two panels'
-  // clip-paths partially overlap.
-  //
-  // This re-runs whenever `requestedService` changes (clicking a
-  // different sub-nav item while already on this page) or once
-  // `isMobile` resolves to its real value (see the layout effect above),
-  // so we don't jump using the wrong branch's scroll logic.
-  const searchParams = useSearchParams();
-  const requestedService = searchParams.get("service");
+    const scrollToPanel = useCallback((i) => {
+      if (!containerRef.current) return;
 
-  useEffect(() => {
-    if (!requestedService) return;
-    scrollToCategory(requestedService);
-  }, [requestedService, isMobile, scrollToCategory]);
+      const panelHeight = window.innerHeight;
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const containerTop = containerRect.top + window.scrollY;
 
-  if (isMobile) return <MobileServices />;
+      // Real scrollable distance for this section, matching what useScroll's
+      // offset: ["start start", "end end"] actually measures — container
+      // height minus one viewport height, NOT panelHeight * TOTAL_PANELS.
+      // Using the wrong (larger) range here is what caused the overshoot
+      // that grew with panel index.
+      const totalScrollableDistance =
+        containerRef.current.offsetHeight - panelHeight;
 
-  return (
-    <section
-      ref={containerRef}
-      className="relative w-full"
-      style={{ height: `${SECTION_HEIGHT_VH}vh`, background: CV.surface }}
-    >
-      {/* Signature gradient rule — once per section */}
-      <div
-        className="absolute top-0 left-0 w-full z-50"
-        style={{ height: 4, background: CV.gradient }}
-      />
+      // Map panel i's reveal point (in the same [0,1] progress space
+      // usePanelProgress/scrollYProgress use) to an actual pixel offset.
+      const targetProgress = (i + REVEAL_POINT) / TOTAL_PANELS;
+      const target = containerTop + targetProgress * totalScrollableDistance;
 
-      <motion.div
-        className="h-screen sticky top-0 overflow-hidden w-full"
-        style={{ maxWidth: 1280, margin: "0 auto", backgroundColor: sectionBg }}
+      setIsNavigating(true);
+
+      animate(window.scrollY, target, {
+        duration: 0.9,
+        ease: [0.22, 1, 0.36, 1],
+        onUpdate(value) {
+          window.scrollTo(0, value);
+        },
+        onComplete() {
+          setIsNavigating(false);
+        },
+      });
+    }, []);
+
+    // Public API for the filter bar (or any other external trigger) to jump
+    // to the panel matching a given category. Works on both the desktop
+    // scroll-jacked layout and the mobile stacked layout.
+    const scrollToCategory = useCallback(
+      (filter) => {
+        const targetIndex =
+          !filter || filter === "all"
+            ? 0
+            : services.findIndex((s) => matchesFilter(s, filter));
+        const idx = targetIndex === -1 ? 0 : targetIndex;
+
+        if (isMobile) {
+          document
+            .getElementById(`service-panel-${services[idx].id}`)
+            ?.scrollIntoView({ behavior: "smooth", block: "start" });
+        } else {
+          scrollToPanel(idx);
+        }
+      },
+      [isMobile, scrollToPanel],
+    );
+
+    useImperativeHandle(ref, () => ({ scrollToCategory, scrollToPanel }), [
+      scrollToCategory,
+      scrollToPanel,
+    ]);
+
+    // Deep-link support: the Services sub-nav links to
+    // `/services?service=<id>` (see data/site.js). Reading that query
+    // param here and feeding it into the *same* scrollToCategory used by
+    // the dot-nav means a sub-nav click lands exactly where a dot-nav
+    // click would — no separate anchor-jump codepath, and therefore no
+    // risk of landing on an in-between scroll offset where two panels'
+    // clip-paths partially overlap.
+    //
+    // This re-runs whenever `requestedService` changes (clicking a
+    // different sub-nav item while already on this page) or once
+    // `isMobile` resolves to its real value (see the layout effect above),
+    // so we don't jump using the wrong branch's scroll logic.
+    const searchParams = useSearchParams();
+    const requestedService = searchParams.get("service");
+
+    useEffect(() => {
+      if (!requestedService) return;
+      scrollToCategory(requestedService);
+    }, [requestedService, isMobile, scrollToCategory]);
+
+    if (isMobile) return <MobileServices />;
+
+    return (
+      <section
+        ref={containerRef}
+        className="relative w-full"
+        style={{ height: `${SECTION_HEIGHT_VH}vh`, background: CV.surface }}
       >
-        {services.map((service, index) => (
-          <ServicePanel
-            key={service.id}
-            service={service}
-            id={service.id}
-            index={index}
-            isNavigating={isNavigating}
-            theme={PANEL_THEMES[index % PANEL_THEMES.length]}
-            direction={directions[index]}
-            scrollYProgress={scrollYProgress}
-            total={TOTAL_PANELS}
-            isActive={activeIndex === index}
-          />
-        ))}
+        {/* Signature gradient rule — once per section */}
+        <div
+          className="absolute top-0 left-0 w-full z-50"
+          style={{ height: 4, background: CV.gradient }}
+        />
 
-        {/* Dot nav */}
-        <nav
-          className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50"
-          aria-label="Service navigation"
+        <motion.div
+          className="h-screen sticky top-0 overflow-hidden w-full"
+          style={{
+            maxWidth: 1280,
+            margin: "0 auto",
+            backgroundColor: sectionBg,
+          }}
         >
-          {services.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => scrollToPanel(i)}
-              aria-label={`Go to service ${i + 1}`}
-              style={{
-                width: activeIndex === i ? 8 : 6,
-                height: activeIndex === i ? 8 : 6,
-                borderRadius: 9999,
-                backgroundColor:
-                  activeIndex === i ? CV.primary : CV.outlineVariant,
-                transition: "all 0.3s ease",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-              }}
+          {services.map((service, index) => (
+            <ServicePanel
+              key={service.id}
+              service={service}
+              id={service.id}
+              index={index}
+              isNavigating={isNavigating}
+              theme={PANEL_THEMES[index % PANEL_THEMES.length]}
+              direction={directions[index]}
+              scrollYProgress={scrollYProgress}
+              total={TOTAL_PANELS}
+              isActive={activeIndex === index}
             />
           ))}
-        </nav>
-      </motion.div>
-    </section>
+
+          {/* Dot nav */}
+          <nav
+            className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50"
+            aria-label="Service navigation"
+          >
+            {services.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => scrollToPanel(i)}
+                aria-label={`Go to service ${i + 1}`}
+                style={{
+                  width: activeIndex === i ? 8 : 6,
+                  height: activeIndex === i ? 8 : 6,
+                  borderRadius: 9999,
+                  backgroundColor:
+                    activeIndex === i ? CV.primary : CV.outlineVariant,
+                  transition: "all 0.3s ease",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: 0,
+                }}
+              />
+            ))}
+          </nav>
+        </motion.div>
+      </section>
+    );
+  },
+);
+
+export default forwardRef(function CinematicServices(props, ref) {
+  // useSearchParams() inside CinematicServicesInner requires a Suspense
+  // boundary — without one, Next.js bails out of static prerendering for
+  // this whole route and the production build fails with "useSearchParams()
+  // should be wrapped in a suspense boundary". This wrapper supplies that
+  // boundary locally so the page file doesn't need to change, and forwards
+  // the ref through to the actual component so scrollToCategory/
+  // scrollToPanel are still reachable from outside (e.g. the sub-nav).
+  return (
+    <Suspense fallback={null}>
+      <CinematicServicesInner {...props} ref={ref} />
+    </Suspense>
   );
 });
-
-export default CinematicServices;
 
 function ServicePanel({
   service,
@@ -354,12 +386,12 @@ function ServicePanel({
     return () => controls.stop();
   }, [index, entranceProgress]);
 
-  const navValue = useMotionValue(1);
   const computedActive = useTransform(
     [entranceProgress, scrollActive],
     ([e, s]) => Math.max(e, s),
   );
-  const active = isNavigating ? navValue : computedActive;
+
+  const active = computedActive;
 
   // Carpet wipe — clipPath driven directly by scroll (or the mount
   // animation, for panel 0)
