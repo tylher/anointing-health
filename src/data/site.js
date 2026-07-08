@@ -224,29 +224,25 @@ export const DAILY_TIMELINE = [
     id: "scene-1",
     time: "8:30am",
     description: "Morning check-in and route planning.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBMIc6dA85wLRfP9E8rOLzEfIJVIWTfdMZpScjRVZR1K1ZfGvrOzd7mVU-8WLAeAHnfl4ic9qfHmbku0e0PxFKDB76NOMCVmy9Ov0OR5HdUhzi9e3PWOfHB9i8YLy9P6kEQlfgdpmAd16a14iKkJ9xSdCecnYu3I7Gq_mp4xrI2Fc6lzijcUUXiY6oKTHiFnGbyiUETpNOhj2jW-yZjaSRreKPLGDKZpcIsmw3ub-0MHpXtb4Lrjq71H9js4Fq7KuOKLcjrgWBMn0n1",
+    image: "/images/morning-routines.jpg",
   },
   {
     id: "scene-2",
     time: "10:00am",
     description: "First home visit of the day.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuBMGiQ1w5TjT-rAz94AoDba_zjTSOZ5vxFK97UP3MPhR7jQ0sBLcvNUffhzQihp-H2BKsX6wJ7JNO66_oMha4mmpiuJoMKmuzczTbXRfp3qmT8gf6BoILfeHbwxF8QUXEJwX6DMjF-tXj-GlAOGWNl8tjkg_lKUumx9EriNHBI0LlPsjQDIIYZ8JmNmH53AgliC5xGVv_inWLBJgPIpW7fqmqbLHO8ui67Nr60GJZxt-gQH4Y-f6Mc_S1kszK7P_nzS8G6uGJ7A6PE3",
+    image: "/images/community-care.jpg",
   },
   {
     id: "scene-3",
     time: "1:00pm",
     description: "Lunch, conversation, and connection.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCIA2u4nnZSmh3SwhiOgFlOaJ0u40PIZkTarZHsNwaA1M3sckZoKtsmS49IxsR8M906DYQLFssca3OwLuvGECiaMaYCtcP7sTl_XXxYbBpz430krpanSIl98n4bkeCMWswZfPeb9FhWjyBuaD0qgWgE8x8hUnMNL_GRS4X645v3i0_mzE9BhMkpK6ZhS6soPI99VlYtnTFz2CXiu3n4KGwXJggJwC4nsX7wxG0Vnm_DYGLagU8cjbV1rB5G1t1i3eMCNjxCycQuXS9v",
+    image: "/images/conversations.jpg",
   },
   {
     id: "scene-4",
     time: "4:00pm",
     description: "Care notes updated, ready for tomorrow.",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCHOoLyomc7MNIIo4_jOF45NqTfd7tj76O5sftscDplZ8tsX8oBlp0jXDqkR5NtGgk9r549l8HQCx0okflR507ZMgenofOGmifR8pUmBlmPysVbLA9oToaHdfAAAOIhz1IT0AymDAVMejxdPaknykuP-QavULP844O9TOXRLlotAAReOzckhNmd1gHOhoxiCP_blXhpl2zsqZycYCBRHhSshQgjk0Z7ca7r6CktCcKwHThQFjH3L0ntfBmIOnZCRnTQZZmgV3nJoBdK",
+    image: "/images/care-notes.jpg",
   },
 ];
 
