@@ -80,14 +80,15 @@ export default function ReferralsHero() {
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 "
             >
-              <motion.button
+              <motion.a
                 type="button"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
                 className="bg-primary text-on-primary px-8 py-3 rounded-lg font-ui text-sm shadow-sm font-medium"
+                href="#referral-form"
               >
                 Submit a Referral
-              </motion.button>
+              </motion.a>
              
             </motion.div>
           </motion.div>
