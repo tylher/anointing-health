@@ -46,7 +46,7 @@ export default function ReferralsHero() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left content */}
           <motion.div
-            className="space-y-8"
+            className="space-y-4"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
@@ -74,18 +74,11 @@ export default function ReferralsHero() {
               </motion.p>
             </div>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap gap-3"
-            >
-              {FEATURE_PILLS.map((pill) => (
-                <FeaturePill key={pill.label} {...pill} />
-              ))}
-            </motion.div>
+          
 
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 pt-4"
+              className="flex flex-col sm:flex-row gap-4 "
             >
               <motion.button
                 type="button"
@@ -95,14 +88,7 @@ export default function ReferralsHero() {
               >
                 Submit a Referral
               </motion.button>
-              <motion.button
-                type="button"
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
-                className="bg-transparent text-primary border-2 border-primary/20 px-8 py-3 rounded-lg font-ui text-sm font-medium"
-              >
-                Download Referral Pack
-              </motion.button>
+             
             </motion.div>
           </motion.div>
 

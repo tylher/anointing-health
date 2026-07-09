@@ -1,9 +1,9 @@
 // components/FilterBar.tsx
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
 import { filterCategories } from "@/data/services-data";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 const colorMap = {
   green: {
@@ -33,7 +33,7 @@ export default function FilterBar({ onFilterChange }) {
   };
 
   return (
-    <section className="bg-surface-container-lowest py-2 border-b border-primary-fixed-dim/20 sticky top-[4.5rem] z-40">
+    <section className="bg-surface-container-lowest py-2 border-b border-primary-fixed-dim/20 sticky top-[4.5rem] z-70">
       <div className="max-w-[1280px] mx-auto px-6 lg:px-8 flex flex-wrap justify-center gap-2">
         {filterCategories.map((category) => {
           const isActive = activeFilter === category.filter;

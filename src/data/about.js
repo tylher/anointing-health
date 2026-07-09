@@ -117,10 +117,9 @@ export const valueCards = [
   },
 ];
 export const clinicalApproach = {
-  image:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuAUJzBvwMpuCqYD7LtfXK6VsyixJjIpCWbU0_Sdbvkap9A9ABwaFvnHGMwzBsuDin4JUXg8Nsm9Tcy878_2Gz4RBfi4_mLP9vx2IS3qN4T1ZKUUALRgy7VYcd-3LWBnvDB9VLfOB2LR-tiiu1uzkk5SBW_ezpJyStad0kzsxQahw9KCTjH8U3vco4sOaZlUy7Gi34zTkKv0OD-6Aseiohxp4-PvPIgPHEo-5RTDcLztZWfcn33aSechOPU1yVwbhhiK4Ds0R6ZSacSJ",
+  image:'/images/anointing-health-leader.jpg',
   quote: "Clinical excellence is a human relationship.",
-  author: "Sarah Jenkins",
+  author: "Adewale Adeleke",
   role: "Community Outreach Lead",
   description:
     "Our approach bridges the gap between rigorous clinical standards and deep, empathetic community care. We don't just treat conditions; we support entire lives.",

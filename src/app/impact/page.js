@@ -16,7 +16,7 @@ export default function ImpactPage() {
     <main className="pt-20">
       <ImpactHero />
       <ImpactAreas />
-      <SocialValue />
+      {/* <SocialValue /> */}
       <TrustedBy />
     </main>
   );

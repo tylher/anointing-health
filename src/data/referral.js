@@ -2,12 +2,19 @@
 // Keeping this separate from the components makes the copy easy for
 // non-engineers to edit, and keeps the JSX focused on layout + motion.
 
-import { MdCalendarMonth, MdEventAvailable, MdHub, MdSpeed, MdTimer, MdVerified } from "react-icons/md";
+import {
+  MdCalendarMonth,
+  MdEventAvailable,
+  MdHub,
+  MdSpeed,
+  MdTimer,
+  MdVerified,
+} from "react-icons/md";
 
 export const HERO_BADGE = "FOR PROFESSIONALS";
 
 export const HERO_HEADING =
-  "Fast, straightforward referrals — because your patients can't wait";
+  "Fast, straightforward referrals - because your patients can't wait";
 
 export const HERO_PARAGRAPH =
   "We understand the critical nature of timely interventions. Our streamlined referral process ensures a rapid response within 24 hours, connecting your patients with expert care immediately.";
@@ -40,7 +47,7 @@ export const FEATURE_PILLS = [
 ];
 
 export const HERO_IMAGE = {
-  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAyXkDh08S3fah6wT8hr9F1_vJM43TiegndzYFizKWF9dkr3mVnHuEJeQKiNEsytU-nuk_gRyqcPQ10VJ9gj9sft3qz2LzNnKovOY0tJzp3KYQisvOaNc86WdEsoJ4q2X8V7cw_itUOqRRN2TguJ8DpMMrUoEUbGOa2TAG9mJoWjyRXs8UuCVC10DV65Yyo9bMy04o0jFca8NyRE6gKElDpNCHTKZ5lqvF7r4HUrydY_0Wf7HkZg-E0J0nMKN-fPsv4PkYOyuA2Ik5_",
+  src: "/images/healthcare-provider.jpg",
   alt: "Professional documentary-style photography for a healthcare website. A female GP or senior nurse in her 40s, wearing a stethoscope, seated at a clean modern desk in a bright UK clinical office. She is focused but calm while reviewing patient notes on a laptop. Soft natural window light, warm-lifted shadows, high-quality editorial photography. Forest green accents in the background.",
 };
 
@@ -109,20 +116,68 @@ export const FORM_STEPS = [
     id: "referrer",
     label: "Referrer Details",
     fields: [
-      { id: "referrerName", label: "Your Full Name", type: "text", half: true, required: true },
-      { id: "referrerRelationship", label: "Relationship to Patient", type: "text", half: true, required: true },
-      { id: "referrerEmail", label: "Your Email", type: "email", half: true, required: true },
-      { id: "referrerPhone", label: "Your Phone", type: "tel", half: true, required: true },
+      {
+        id: "referrerName",
+        label: "Your Full Name",
+        type: "text",
+        half: true,
+        required: true,
+      },
+      {
+        id: "referrerRelationship",
+        label: "Relationship to Patient",
+        type: "text",
+        half: true,
+        required: true,
+      },
+      {
+        id: "referrerEmail",
+        label: "Your Email",
+        type: "email",
+        half: true,
+        required: true,
+      },
+      {
+        id: "referrerPhone",
+        label: "Your Phone",
+        type: "tel",
+        half: true,
+        required: true,
+      },
     ],
   },
   {
     id: "patient",
     label: "Patient Details",
     fields: [
-      { id: "patientName", label: "Patient Full Name", type: "text", half: true, required: true },
-      { id: "patientDob", label: "Patient Date of Birth", type: "date", half: true, required: true },
-      { id: "patientAddress", label: "Patient Address", type: "text", half: false, required: true },
-      { id: "patientNeeds", label: "Care Needs / Condition", type: "text", half: false, required: true },
+      {
+        id: "patientName",
+        label: "Patient Full Name",
+        type: "text",
+        half: true,
+        required: true,
+      },
+      {
+        id: "patientDob",
+        label: "Patient Date of Birth",
+        type: "date",
+        half: true,
+        required: true,
+      },
+      {
+        id: "patientAddress",
+        label: "Patient Address",
+        type: "text",
+        half: false,
+        required: true,
+      },
+      {
+        id: "patientNeeds",
+        label: "Care Needs / Condition",
+        type: "text",
+        half: false,
+        required: true,
+      },
     ],
   },
 ];

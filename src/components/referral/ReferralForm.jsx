@@ -93,7 +93,7 @@ export default function ReferralForm() {
   };
 
   return (
-    <section className="py-24 bg-surface relative overflow-hidden">
+    <section className="py-16 bg-surface relative overflow-hidden">
       <div className="max-w-container-max mx-auto px-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left panel: intro + process */}

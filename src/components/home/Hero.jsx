@@ -57,7 +57,7 @@ const floatUp = {
 
 export default function Hero() {
   return (
-    <section className="hero-gradient min-h-[90vh] pt-16 pb-20 relative overflow-hidden flex items-center  px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)">
+    <section className="hero-gradient min-h-[90vh] pt-16 pb-12 relative overflow-hidden flex items-center  px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)">
       {/* Background blobs */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}
@@ -170,7 +170,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Trust chips */}
+          {/* Trust chips
           <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
             {trustChips.map((chip, i) => (
               <motion.span
@@ -183,7 +183,7 @@ export default function Hero() {
                 {chip.label}
               </motion.span>
             ))}
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* ──────── Right: Photo collage ──────── */}
@@ -203,8 +203,9 @@ export default function Hero() {
               src={heroImages.primary}
               alt="A carer supporting a client in their home"
               fill
-              className="object-cover"
+              className="object-cover transform -scale-x-100"
               priority
+              
             />
           </motion.div>
 

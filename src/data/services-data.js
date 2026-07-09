@@ -25,7 +25,7 @@ export const servicesData = [
     description:
       "Compassionate daily assistance to help you or your loved one live independently and comfortably at home.",
     imageUrl: "/images/homecare.jpg",
-    href: "/services/home-care",
+    href: "/services?service=home-care",
     isFeatured: false,
   },
   {
@@ -34,7 +34,7 @@ export const servicesData = [
     description:
       "Specialised, patient-centred care fostering dignity, memory support, and a safe living environment.",
     imageUrl: "/images/elderlycare.jpg",
-    href: "/services/elderly-dementia-care",
+    href: "/services?service=elderly",
     isFeatured: false,
   },
   {
@@ -43,7 +43,7 @@ export const servicesData = [
     description:
       "Empowering individuals with disabilities to actively participate in their community and achieve personal goals.",
     imageUrl: "/images/disability-support.jpg",
-    href: "/services/disability-support",
+    href: "/services?service=disability",
     isFeatured: false,
   },
   {
@@ -52,7 +52,7 @@ export const servicesData = [
     description:
       "Responsive interventions designed to de-escalate situations and maintain stability before hospitalisation is needed.",
     imageUrl: "/images/crisis-prevention.jpg",
-    href: "/services/crisis-prevention",
+    href: "/services?service=crisis",
     isFeatured: false,
   },
   {
@@ -61,7 +61,7 @@ export const servicesData = [
     description:
       "Respite and guidance for family members, ensuring they have the strength and resources to continue caring.",
     imageUrl: "/images/carer-support.jpg",
-    href: "/services/carer-support",
+    href: "/services?service=carer",
     isFeatured: false,
   },
 ];
@@ -123,11 +123,11 @@ export const services = [
     description:
       "Personal care, medication monitoring, meal prep, mobility assistance delivered with dignity in the comfort of your own home.",
     features: [
-      "Individual care plan",
-      "Regular reviews",
-      "CQC-regulated staff",
+     'Personal care (washing, dressing, grooming)',
+     'Medication support',
+     'Meal preparation',
+     'Mobility assistance'
     ],
-    link: "#",
     image: "/images/home-care.jpg",
   },
   {
@@ -147,7 +147,7 @@ export const services = [
       "Trauma-informed care",
       "7 days a week availability",
     ],
-    link: "#",
+    link: "/services/mental-health",
     image: "/images/mental-outreach2.jpg",
   },
   {
@@ -163,11 +163,11 @@ export const services = [
     description:
       "Specialist companionship, dementia care, falls prevention, and dedicated assistance for daily living activities.",
     features: [
-      "Dementia-trained staff",
-      "Dedicated family liaison",
-      "Consistent familiar faces",
+      'Companionship',
+      'Dementia care',
+      'Daily living support',
+      'Falls prevention'
     ],
-    link: "#",
     image: "/images/elderly-care.jpg",
   },
   {
@@ -183,11 +183,10 @@ export const services = [
     description:
       "Empowering independent living through community access, routine assistance, and collaborative goal-setting.",
     features: [
-      "Person-centred plans",
-      "Community partnerships",
-      "Flexible support hours",
+      'Independent living support',
+      'Community access',
+      'Daily routines assistance'
     ],
-    link: "#",
     image: "/images/disability-support2.jpg",
   },
   {
@@ -208,7 +207,6 @@ export const services = [
       "Experienced crisis staff",
       "AMHP coordination",
     ],
-    link: "#",
     image: "/images/crisis-prevention2.jpg",
   },
   {
@@ -229,7 +227,6 @@ export const services = [
       "Resource signposting",
       "Peer support referrals",
     ],
-    link: "#",
     image: "/images/carer-support2.jpg",
   },
 ];
@@ -240,42 +237,42 @@ export const howItWorksSteps = [
     title: "Referral submitted",
     description:
       "Your journey begins with a simple referral from a GP, social worker, or family member.",
-    image: '/images/referral-placed.jpg',
+    image: "/images/referral-placed.jpg",
   },
   {
     number: "02",
     title: "Rapid acknowledgement",
     description:
       "We respond within 24 hours to confirm receipt and begin coordinating your initial consultation.",
-    image: '/images/referral-acknowledgement.jpg',
+    image: "/images/referral-acknowledgement.jpg",
   },
   {
     number: "03",
     title: "Home assessment arranged",
     description:
       "Our clinical lead visits your home to understand your environment, needs, and personal goals.",
-    image: '/images/home-assessment.jpg',
+    image: "/images/home-assessment.jpg",
   },
   {
     number: "04",
     title: "Personalised care plan created",
     description:
       "We co-design a detailed clinical pathway tailored specifically to your health and wellbeing.",
-    image: '/images/curated-plan.jpg',
+    image: "/images/curated-plan.jpg",
   },
   {
     number: "05",
     title: "Regular visits begin",
     description:
       "Your dedicated care team starts scheduled visits, providing consistent and compassionate support.",
-    image: '/images/regular-visits.jpg',
+    image: "/images/regular-visits.jpg",
   },
   {
     number: "06",
     title: "Review, adapt, and plan discharge",
     description:
       "We continually monitor your progress, adjusting the plan to ensure optimal outcomes and independence.",
-    image: '/images/plan-review.jpg',
+    image: "/images/plan-review.jpg",
   },
 ];
 
@@ -323,4 +320,4 @@ export const heroImages = {
   right: "/images/service-hero-2.jpg",
 };
 
-export const ctaBackgroundImage = PLACEHOLDER_IMG;
+export const ctaBackgroundImage = '/images/service-cta.jpg';

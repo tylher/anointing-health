@@ -93,7 +93,7 @@ export default function WhoWeHelp() {
     <section
       id="who-we-help"
       ref={sectionRef}
-      className="py-24 px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)"
+      className="py-12 px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)"
       style={{ backgroundColor: "var(--color-surface)" }}
     >
       <div className="max-w-7xl mx-auto">

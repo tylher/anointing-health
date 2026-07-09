@@ -1,8 +1,9 @@
 import Image from "next/image";
+import { MdStar } from "react-icons/md";
 
 export function PhotoCollage({ images }) {
   return (
-    <div className="relative h-[500px] sm:h-[600px] lg:h-[700px]">
+    <div className="relative  sm:h-150 lg:h-125">
       {images.map((image) => (
         <div
           key={image.id}
@@ -18,7 +19,7 @@ export function PhotoCollage({ images }) {
           {image.featured && (
             <div className="absolute top-2 right-2 w-8 h-8 rounded-full bg-[#C9961A] flex items-center justify-center">
               <span className="material-symbols-outlined text-white text-sm">
-                star
+                <MdStar/>
               </span>
             </div>
           )}

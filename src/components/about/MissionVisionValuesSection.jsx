@@ -17,7 +17,7 @@ const gridVariants = {
 
 export function MissionVisionValuesSection() {
   return (
-    <section className="py-20 md:py-28 bg-surface-container-lowest">
+    <section className="py-10 md:py-16 bg-surface-container-lowest">
       <div className="max-w-[1280px] mx-auto px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)">
         <div className="max-w-2xl mb-14">
           <span className="inline-block text-xs font-sans font-bold tracking-[0.14em] uppercase text-primary mb-3">

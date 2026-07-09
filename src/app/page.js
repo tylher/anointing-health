@@ -15,7 +15,7 @@ export default function Home() {
       <ServicesSection />
       <TimelineSection />
       <PhotoBreakSection />
-      <TestimonialsSection/>
+      {/* <TestimonialsSection/> */}
     </main>
   );
 }

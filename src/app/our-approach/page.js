@@ -11,7 +11,7 @@ export default function HomePage() {
       <WhoWeServeSection />
       <DailyTimelineSection />
       {/* <CoverageSection /> */}
-      <EligibilityChecker />
+      {/* <EligibilityChecker /> */}
     </main>
   );
 }

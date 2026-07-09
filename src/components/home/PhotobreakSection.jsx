@@ -24,14 +24,12 @@ export default function PhotoBreakSection() {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="inline-block px-3 py-1 rounded-full mb-6 bg-[#C9961A] font-ui text-xs font-bold text-[#181c20] uppercase tracking-wider">
-            Anointing Health Care · Est. UK
-          </span>
+        
           <h2 className="mb-4 text-white font-serif font-semibold italic text-6xl leading-tight">
-            Care is not a service. It's a relationship.
+            Care is not a service. <span className="block">It's a relationship.</span>
           </h2>
           <p className="text-white/85 font-sans text-lg">
-            Every visit, every conversation, every moment of support — built on
+            Every visit, every conversation, every moment of support - built on
             trust.
           </p>
         </motion.div>

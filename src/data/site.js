@@ -89,7 +89,7 @@ export const whoWeHelpTabs = [
       "Rural or hard-to-reach location",
       "Disengaged from existing care",
     ],
-    ctaLabel: "Learn about individual support",
+    ctaLabel: "View services",
     ctaHref: "/services",
   },
   {
@@ -104,7 +104,7 @@ export const whoWeHelpTabs = [
       "Guidance on crisis situations",
       "Signposting to carer resources",
     ],
-    ctaLabel: "Explore carer resources",
+    ctaLabel: "View services",
     ctaHref: "/services",
   },
   {
@@ -120,7 +120,7 @@ export const whoWeHelpTabs = [
       "Housing and voluntary sector",
       "Integrated Care Boards",
     ],
-    ctaLabel: "Information for referrers",
+    ctaLabel: "View services",
     ctaHref: "/services",
   },
 ];
@@ -340,8 +340,8 @@ export const HERO = {
   subheading:
     "We support adults of all backgrounds who are finding it hard to manage their mental health, live independently, or access mainstream services. You don't need to be in crisis to reach out.",
   heroBannerImage: "/images/approach-1.jpg",
-  ctaPrimary: { label: "Am I eligible?", href: "#eligibility" },
-  ctaSecondary: { label: "Talk to us first", href: "/contact" },
+  // ctaPrimary: { label: "Am I eligible?", href: "#eligibility" },
+  cta: { label: "Talk to us first", href: "/contact" },
   floatingChip: "Every story matters",
 };
 

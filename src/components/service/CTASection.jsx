@@ -1,12 +1,13 @@
 "use client";
 
+import { ctaBackgroundImage } from "@/data/services-data";
 import { motion } from "framer-motion";
 import RevealUp from "./RevealUp";
-import { ctaBackgroundImage } from "@/data/services-data";
 
 export default function CTASection() {
   return (
     <section className="relative w-full h-[400px] overflow-hidden">
+      <div className="absolute bg-gradient-to-b from-[#036135] to-[#235492] opacity-60 h-full w-full z-10" />
       <div className="absolute inset-0">
         <img
           alt="Supportive care"
@@ -30,25 +31,27 @@ export default function CTASection() {
         </RevealUp>
         <RevealUp delay={0.15}>
           <p className="text-lg text-white/90 mb-8 max-w-2xl">
-            Speak to our team today — no pressure, no obligation.
+            Speak to our team today, no pressure, no obligation.
           </p>
         </RevealUp>
         <RevealUp delay={0.3}>
           <div className="flex flex-col md:flex-row gap-4">
-            <motion.button
+            <motion.a
               className="px-8 py-3 bg-white text-[#036135] font-medium rounded-full shadow-lg cursor-hoverable"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
+              href="/contact"
             >
               Get Support
-            </motion.button>
-            <motion.button
+            </motion.a>
+            <motion.a
               className="px-8 py-3 bg-[#235492] text-white font-medium rounded-full shadow-lg cursor-hoverable"
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
+              href="/referral"
             >
               Refer Someone
-            </motion.button>
+            </motion.a>
           </div>
         </RevealUp>
       </div>

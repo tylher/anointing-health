@@ -17,7 +17,7 @@ const cardVariants = {
 
 export default function ServicesSection() {
   return (
-    <section className="py-24 px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk) bg-surface-container-lowest border-t border-outline-variant/30">
+    <section className="py-12 px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk) bg-surface-container-lowest border-t border-outline-variant/30">
       <div className="max-w-container-max mx-auto">
         <div className="mb-12">
           <h2 className="font-serif text-[40px] font-semibold text-on-background mb-3">

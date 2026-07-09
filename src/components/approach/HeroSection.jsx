@@ -21,18 +21,18 @@ export default function HeroSection() {
 
           <div className="flex w-full md:w-2/5 justify-center items-center gap-5">
             <Link
-              href={HERO.ctaPrimary.href}
+              href={HERO.cta.href}
               className="bg-primary text-on-primary font-ui text-sm md:text-base md:px-8 md:py-4 px-5 py-2  rounded-full hover:-translate-y-1 transition-transform tinted-shadow w-full text-center"
             >
-              {HERO.ctaPrimary.label}
+              {HERO.cta.label}
             </Link>
 
-            <Link
+            {/* <Link
               href={HERO.ctaSecondary.href}
               className="bg-tertiary-fixed text-tertiary font-ui text-sm md:text-base md:px-8 md:py-4 px-5 py-2 rounded-full hover:-translate-y-1 transition-transform w-full border border-transparent hover:border-tertiary-fixed-dim"
             >
               {HERO.ctaSecondary.label}
-            </Link>
+            </Link> */}
           </div>
         </div>
 

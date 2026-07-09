@@ -19,7 +19,7 @@ export default function ContactPage() {
       <PathwayCards />
       <ContactSection />
       <FaqSection />
-      <ClosingBand />
+      {/* <ClosingBand /> */}
     </main>
   );
 }

@@ -632,7 +632,7 @@ function ServicePanel({
         </motion.ul>
 
         {/* CTA */}
-        <motion.div style={{ opacity: ctaOpacity, y: ctaY }}>
+       {service.link && <motion.div style={{ opacity: ctaOpacity, y: ctaY }}>
           <motion.a
             href={service.link}
             whileHover={{ opacity: 0.85 }}
@@ -657,7 +657,7 @@ function ServicePanel({
             Explore {service.title}
             <MdArrowForward size={16} />
           </motion.a>
-        </motion.div>
+        </motion.div>}
       </div>
 
       {/* Scroll hint — first panel only */}
@@ -669,7 +669,7 @@ function ServicePanel({
           animate={{ opacity: 1 }}
           transition={{ delay: 1.0, duration: 0.6 }}
         >
-          <span
+          {/* <span
             style={{
               fontFamily: "DM Sans, sans-serif",
               fontSize: 10,
@@ -679,7 +679,7 @@ function ServicePanel({
             }}
           >
             Scroll to explore
-          </span>
+          </span> */}
           <motion.div
             animate={{ y: [0, 6, 0] }}
             transition={{ repeat: Infinity, duration: 1.6 }}
@@ -769,26 +769,28 @@ function MobileServices() {
                 {service.description}
               </p>
 
-              <a
-                href={service.link}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: "100%",
-                  padding: "13px 0",
-                  backgroundColor: "#ffffff",
-                  color: theme.solid,
-                  fontFamily: "DM Sans, sans-serif",
-                  fontSize: 15,
-                  fontWeight: 700,
-                  letterSpacing: "0.02em",
-                  borderRadius: 8,
-                  textDecoration: "none",
-                }}
-              >
-                Explore {service.title}
-              </a>
+              {service.link && (
+                <a
+                  href={service.link}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "100%",
+                    padding: "13px 0",
+                    backgroundColor: "#ffffff",
+                    color: theme.solid,
+                    fontFamily: "DM Sans, sans-serif",
+                    fontSize: 15,
+                    fontWeight: 700,
+                    letterSpacing: "0.02em",
+                    borderRadius: 8,
+                    textDecoration: "none",
+                  }}
+                >
+                  Explore {service.title}
+                </a>
+              )}
             </div>
           </div>
         );

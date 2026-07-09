@@ -14,7 +14,7 @@ export default function Footer() {
             <Link href="/" className="flex items-center gap-2 group">
               <Image src={"/images/logo.png"} width={65} height={65} />
             </Link>
-            <p className="text-[14px] opacity-70 leading-relaxed font-sans">
+            <p className="text-[14px] opacity-90 leading-relaxed font-sans">
               Providing person-centred care that empowers individuals to live
               with dignity, independence, and joy within the comfort of their
               own homes and communities.
@@ -47,7 +47,7 @@ export default function Footer() {
               {quickLinks.map((link, i) => (
                 <li
                   key={i}
-                  className="text-[14px] opacity-80 hover:opacity-100 hover:text-white transition-all font-ui"
+                  className="text-[14px] opacity-90 hover:opacity-100 hover:text-white transition-all font-ui"
                 >
                   <Link href={link.href}>{link.label}</Link>
                 </li>
@@ -65,7 +65,7 @@ export default function Footer() {
               {services.map((service, i) => (
                 <li
                   key={i}
-                  className="text-[14px] opacity-80 hover:opacity-100 hover:text-white transition-all"
+                  className="text-[14px] opacity-90 hover:opacity-100 hover:text-white transition-all"
                 >
                   <Link href={service.href}>{service.label}</Link>
                 </li>
@@ -109,7 +109,7 @@ export default function Footer() {
               <Link
                 key={i}
                 href={link.href}
-                className="text-[12px] text-[#6f7a70] hover:text-white transition-colors"
+                className="text-[12px] opacity-90 hover:opacity-100 transition-colors"
               >
                 {link.label}
               </Link>

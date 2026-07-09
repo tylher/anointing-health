@@ -85,7 +85,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={[
           "fixed top-0 w-full z-50 transition-all duration-300",
-          "flex justify-between items-center h-24",
+          "flex justify-between items-center h-28",
           "px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)",
           "max-w-[1280px] mx-auto left-0 right-0",
           scrolled ? "nav-scrolled" : "bg-transparent",
@@ -201,7 +201,7 @@ export default function Navbar() {
             Refer Someone
           </Link>
           <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}>
-            <Link href="/support" className="btn-primary !py-2 !px-5 text-sm">
+            <Link href="/contact" className="btn-primary !py-2 !px-5 text-sm">
               Get Support <MdArrowForward />
             </Link>
           </motion.div>

@@ -92,7 +92,7 @@ export const outreachCards = [
     body: "Daily structure is a foundation of mental health recovery. We support people in building sustainable routines, self-care habits, and a sense of agency over their own lives.",
     chip: "Strengths-based",
     detail:
-      "Goal-setting is done collaboratively. We use SMART goals aligned to the individual's own priorities — not a template — reviewed at every visit and formally at each care plan review.",
+      "Goal-setting is done collaboratively. We use SMART goals aligned to the individual's own priorities - not a template, eviewed at every visit and formally at each care plan review.",
   },
 ];
 
@@ -105,7 +105,7 @@ export const supportPanels = [
     photo: "/images/mental-5.jpg",
     teaser: "Active listening, emotional validation, and a consistent, trusted presence.",
     description:
-      "We provide non-judgemental emotional support in the person's home, helping them feel heard and understood. Our workers are trained to recognise deteriorating mental state and escalate appropriately. Sessions are unscripted — following the person's agenda, not a checklist.",
+      "We provide non-judgemental emotional support in the person's home, helping them feel heard and understood. Our workers are trained to recognise deteriorating mental state and escalate appropriately. Sessions are unscripted - following the person's agenda, not a checklist.",
     features: ["Weekly scheduled visits", "Consistent named worker", "Linked to crisis planning"],
     cta: "Talk to our team",
   },
@@ -117,7 +117,7 @@ export const supportPanels = [
     photo: "/images/mental-6.jpg",
     teaser: "Building the daily framework that underpins recovery and prevents relapse.",
     description:
-      "We work collaboratively with each person to establish morning, afternoon, and evening routines that balance activity, self-care, and rest. Structure reduces anxiety, improves sleep, and creates a sense of purpose — particularly in the early stages of recovery. We review and adapt routines at every visit, never imposing rigidity.",
+      "We work collaboratively with each person to establish morning, afternoon, and evening routines that balance activity, self-care, and rest. Structure reduces anxiety, improves sleep, and creates a sense of purpose - particularly in the early stages of recovery. We review and adapt routines at every visit, never imposing rigidity.",
     features: ["Personalised daily schedules", "Gradual progression goals", "Family and carer involvement"],
     cta: "See how it works",
   },
@@ -148,7 +148,7 @@ export const liveInCareFeatures = [
     id: "personalised-plans",
     icon: MdAssignment,
     title: "Fully Personalised Care Plans",
-    body: "Your care plan is built around your routines, preferences, and health goals — reviewed and updated as your needs evolve.",
+    body: "Your care plan is built around your routines, preferences, and health goals - reviewed and updated as your needs evolve.",
     chips: ["Co-produced care plan", "Regular reviews", "Family kept informed"],
   },
 ];
@@ -160,7 +160,7 @@ export const faqItems = [
   },
   {
     q: "What happens during the first visit?",
-    a: "Your first visit is an introductory meeting — there is no pressure. One of our community workers will visit your home at a time that suits you, listen to what you're going through, and explain how we might be able to help. Nothing is agreed until you're ready.",
+    a: "Your first visit is an introductory meeting - there is no pressure. One of our community workers will visit your home at a time that suits you, listen to what you're going through, and explain how we might be able to help. Nothing is agreed until you're ready.",
   },
   {
     q: "Will I always see the same person?",
@@ -172,7 +172,7 @@ export const faqItems = [
   },
   {
     q: "What if I'm in crisis right now?",
-    a: "If you are in immediate danger, please call 999. For urgent mental health support, contact the NHS Crisis Line: 0800 xxx xxxx. Our outreach team can also respond rapidly to referrals from crisis teams — contact us and we will do our best to help.",
+    a: "If you are in immediate danger, please call 999. For urgent mental health support, contact the NHS Crisis Line: 0800 xxx xxxx. Our outreach team can also respond rapidly to referrals from crisis teams - contact us and we will do our best to help.",
   },
   {
     q: "Are your services available outside Cumbria?",

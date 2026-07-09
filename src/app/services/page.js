@@ -18,7 +18,7 @@ export default function HomePage() {
 
   return (
     <>
-      <main className="flex-grow pt-20">
+      <main className="flex-grow pt-28">
         <ServicesHero />
         <div className="tricolour-rule" />
         <>
