@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { MdShield } from "react-icons/md";
+import { MdHealthAndSafety } from "react-icons/md";
 import { stats } from "@/data/site";
 
 /* ── Count-up hook ── */
@@ -116,7 +116,7 @@ function StaticStat({ value, label }) {
 function IconStat({ label }) {
   return (
     <div className="flex flex-col items-center justify-center px-4">
-      <MdShield
+      <MdHealthAndSafety
         className="text-4xl mb-1"
         style={{ color: "var(--color-primary)" }}
       />

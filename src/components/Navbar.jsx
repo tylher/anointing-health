@@ -6,7 +6,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { MdArrowForward, MdClose, MdKeyboardArrowDown, MdMenu } from "react-icons/md";
+import {
+  MdArrowForward,
+  MdClose,
+  MdKeyboardArrowDown,
+  MdMenu,
+} from "react-icons/md";
 
 /* Framer variants */
 const drawerVariants = {
@@ -84,7 +89,7 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={[
-          "fixed top-0 w-full z-50 transition-all duration-300",
+          "fixed top-0 w-full z-70 transition-all duration-300",
           "flex justify-between items-center h-28",
           "px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)",
           "max-w-[1280px] mx-auto left-0 right-0",
@@ -227,7 +232,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-40 md:hidden flex flex-col pt-24 px-6 pb-10 overflow-y-auto"
+            className="fixed inset-0 z-60 md:hidden flex flex-col pt-24 px-6 pb-10 overflow-y-auto"
             style={{
               backgroundColor: "rgba(247,249,255,0.97)",
               backdropFilter: "blur(16px)",
@@ -245,10 +250,7 @@ export default function Navbar() {
                 if (link.subLinks) {
                   return (
                     <motion.div key={link.href} variants={linkItem}>
-                      <button
-                        type="button"
-                        onClick={() => setMobileServicesOpen((v) => !v)}
-                        style={{ fontFamily: "var(--font-serif)" }}
+                      <div
                         className={[
                           "w-full flex items-center justify-between py-3 border-b",
                           "border-[color:var(--color-outline-variant)]",
@@ -257,23 +259,36 @@ export default function Navbar() {
                             : "text-[color:var(--color-on-background)]",
                         ].join(" ")}
                       >
-                        <span
-                          className={[
-                            "text-[1.75rem] font-semibold rounded-lg",
-                            active
-                              ? "bg-[color:var(--color-primary)]/10 px-3 -mx-3"
-                              : "",
-                          ].join(" ")}
+                        <Link
+                          href={link.href}
+                          className="cursor-pointer"
+                          onClick={() => setMobileOpen(false)}
                         >
-                          {link.label}
-                        </span>
-                        <MdKeyboardArrowDown
-                          className={[
-                            "text-3xl transition-transform duration-200",
-                            mobileServicesOpen ? "rotate-180" : "",
-                          ].join(" ")}
-                        />
-                      </button>
+                          <span
+                            className={[
+                              "text-[1.75rem] font-semibold rounded-lg",
+                              active
+                                ? "bg-[color:var(--color-primary)]/10 px-3 -mx-3"
+                                : "",
+                            ].join(" ")}
+                          >
+                            {link.label}
+                          </span>
+                        </Link>
+
+                        <button
+                          type="button"
+                          onClick={() => setMobileServicesOpen((v) => !v)}
+                          style={{ fontFamily: "var(--font-serif)" }}
+                        >
+                          <MdKeyboardArrowDown
+                            className={[
+                              "text-3xl transition-transform duration-200",
+                              mobileServicesOpen ? "rotate-180" : "",
+                            ].join(" ")}
+                          />
+                        </button>
+                      </div>
 
                       <AnimatePresence>
                         {mobileServicesOpen && (
@@ -329,7 +344,9 @@ export default function Navbar() {
                       }}
                       className={[
                         "block py-3 border-b border-[color:var(--color-outline-variant)]",
-                        active ? "bg-[color:var(--color-primary)]/10 px-3 -mx-3 rounded-lg" : "",
+                        active
+                          ? "bg-[color:var(--color-primary)]/10 px-3 -mx-3 rounded-lg"
+                          : "",
                       ].join(" ")}
                     >
                       {link.label}

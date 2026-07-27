@@ -1,6 +1,6 @@
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
-import { MdCall, MdEmail, MdMail, MdPhone, MdSchedule } from "react-icons/md";
+import { MdCall, MdMail, MdSchedule } from "react-icons/md";
 
 export const HERO = {
   heading: "Let's talk. We're here to help.",
@@ -30,7 +30,7 @@ export const PATHWAY_CARDS = [
   {
     id: "refer",
     image: {
-      src: '/images/contact-3.jpg',
+      src: "/images/contact-3.jpg",
       alt: "Healthcare professional reviewing notes",
     },
     accentColor: "#3f6dad", // tertiary-container
@@ -72,12 +72,14 @@ export const CONTACT_DETAILS = [
   {
     icon: MdMail,
     label: "Email",
-    value: "hello@anointinghealthcare.co.uk",
+    value: "info@anointinghealthcare.co.uk",
+    link: "mailto:info@anointinghealthcare.co.uk",
   },
   {
     icon: MdCall,
     label: "Phone",
-    value: "01228 123 456",
+    value: "+44 7307 373405",
+    link: "tel:+447307373405",
   },
   {
     icon: MdSchedule,

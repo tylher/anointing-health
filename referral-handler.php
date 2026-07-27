@@ -66,7 +66,7 @@ if (!empty($errors)) {
 $clean['referrerEmail'] = preg_replace('/[\r\n]+/', '', $clean['referrerEmail']);
 $clean['referrerName']  = preg_replace('/[\r\n]+/', '', $clean['referrerName']);
 
-$to      = "referrals@anointinghealth.co.uk";
+$to      = "info@anointinghealth.co.uk";
 $subject = "New Referral: " . $clean['patientName'];
 
 $body  = "REFERRER\n";

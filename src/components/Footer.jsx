@@ -67,7 +67,7 @@ export default function Footer() {
                   key={i}
                   className="text-[14px] opacity-90 hover:opacity-100 hover:text-white transition-all"
                 >
-                  <Link href={service.href}>{service.label}</Link>
+                  <Link href={service.href} scroll={false}>{service.label}</Link>
                 </li>
               ))}
             </ul>
@@ -80,10 +80,12 @@ export default function Footer() {
             </h4>
 
             <div className="flex flex-col gap-4">
-              <p className="text-[14px] opacity-80">
+              <Link href="mailto:info@anointinghealthcare.co.uk" className="text-[14px] opacity-80">
                 Email: info@anointinghealthcare.co.uk
-              </p>
-              <p className="text-[14px] opacity-80">Phone: 01228 555 123</p>
+              </Link>
+              <Link href="tel:+447307373405" className="text-[14px] opacity-80">
+                Phone: +44 7307 373405
+              </Link>
 
               <div className="mt-4 p-4 border border-white/20 rounded-lg inline-flex items-center gap-3">
                 <span className="material-symbols-outlined text-white">
@@ -104,7 +106,7 @@ export default function Footer() {
             reserved.
           </p>
 
-          <div className="flex flex-wrap gap-4 font-ui">
+          {/* <div className="flex flex-wrap gap-4 font-ui">
             {legalLinks.map((link, i) => (
               <Link
                 key={i}
@@ -114,7 +116,7 @@ export default function Footer() {
                 {link.label}
               </Link>
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>

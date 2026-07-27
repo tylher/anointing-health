@@ -11,6 +11,7 @@ import {
 } from "../../data/referral";
 import FloatingLabelInput from "./FloatinglabelInput";
 import ProcessStep from "./Processstep";
+import SuccessModal from "../common/SuccessModal";
 
 const REFERRAL_ENDPOINT =
   "https://anointinghealth.co.uk/api/referral-handler.php";
@@ -30,6 +31,7 @@ export default function ReferralForm() {
   const [touched, setTouched] = useState({});
   const [status, setStatus] = useState("idle"); // idle | submitting | success | error
   const [errorMsg, setErrorMsg] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const currentStep = FORM_STEPS[stepIndex];
   const isLastStep = stepIndex === FORM_STEPS.length - 1;
@@ -86,6 +88,12 @@ export default function ReferralForm() {
       }
 
       setStatus("success");
+      setShowSuccess(true);
+      setForm((f) => {
+        const reset = {};
+        Object.keys(f).forEach((key) => (reset[key] = ""));
+        return reset;
+      });
     } catch (err) {
       setStatus("error");
       setErrorMsg(err.message || "Network error. Please try again.");
@@ -250,6 +258,14 @@ export default function ReferralForm() {
                 {status === "error" && (
                   <p className="text-sm text-red-600 font-ui">{errorMsg}</p>
                 )}
+                {/* {status === "success" && ( */}
+                  <SuccessModal
+                    isOpen={showSuccess}
+                    onClose={() => setShowSuccess(false)}
+                    title="Referral Received"
+                    message="Thanks for the referral - our team will reach out soon"
+                  />
+                {/* )} */}
 
                 <div className="flex gap-3 mt-8">
                   {stepIndex > 0 && (

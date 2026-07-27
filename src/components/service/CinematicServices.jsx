@@ -265,7 +265,17 @@ const CinematicServicesInner = forwardRef(
 
     useEffect(() => {
       if (!requestedService) return;
-      scrollToCategory(requestedService);
+      let raf1, raf2;
+      raf1 = requestAnimationFrame(() => {
+        raf2 = requestAnimationFrame(() => {
+          scrollToCategory(requestedService);
+        });
+      });
+
+      return () => {
+        cancelAnimationFrame(raf1);
+        cancelAnimationFrame(raf2);
+      };
     }, [requestedService, isMobile, scrollToCategory]);
 
     if (isMobile) return <MobileServices />;
@@ -307,7 +317,7 @@ const CinematicServicesInner = forwardRef(
 
           {/* Dot nav */}
           <nav
-            className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-50"
+            className="absolute right-8 top-1/2 -translate-y-1/2 flex flex-col gap-3 z-40"
             aria-label="Service navigation"
           >
             {services.map((_, i) => (
@@ -632,32 +642,34 @@ function ServicePanel({
         </motion.ul>
 
         {/* CTA */}
-       {service.link && <motion.div style={{ opacity: ctaOpacity, y: ctaY }}>
-          <motion.a
-            href={service.link}
-            whileHover={{ opacity: 0.85 }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.2 }}
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 8,
-              padding: "12px 28px",
-              backgroundColor: "#ffffff",
-              color: theme.solid,
-              fontFamily: "DM Sans, sans-serif",
-              fontSize: 15,
-              fontWeight: 700,
-              letterSpacing: "0.02em",
-              borderRadius: 8,
-              textDecoration: "none",
-              boxShadow: "0 4px 20px rgba(27,77,49,0.12)",
-            }}
-          >
-            Explore {service.title}
-            <MdArrowForward size={16} />
-          </motion.a>
-        </motion.div>}
+        {service.link && (
+          <motion.div style={{ opacity: ctaOpacity, y: ctaY }}>
+            <motion.a
+              href={service.link}
+              whileHover={{ opacity: 0.85 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.2 }}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "12px 28px",
+                backgroundColor: "#ffffff",
+                color: theme.solid,
+                fontFamily: "DM Sans, sans-serif",
+                fontSize: 15,
+                fontWeight: 700,
+                letterSpacing: "0.02em",
+                borderRadius: 8,
+                textDecoration: "none",
+                boxShadow: "0 4px 20px rgba(27,77,49,0.12)",
+              }}
+            >
+              Explore {service.title}
+              <MdArrowForward size={16} />
+            </motion.a>
+          </motion.div>
+        )}
       </div>
 
       {/* Scroll hint — first panel only */}

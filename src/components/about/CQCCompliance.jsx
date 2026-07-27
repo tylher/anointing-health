@@ -7,7 +7,7 @@ import CQCStandardItem from "./CQCStandardItem";
 export default function CQCComplianceSection() {
   return (
     <section className="bg-surface py-[80px]">
-      <div className="mx-auto max-w-[1280px] px-6 lg:px-8">
+      <div className="mx-auto max-w-[1280px] px-4 lg:px-8">
         <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-2">
           {/* Left Column */}
           <div className="fade-up w-full ">

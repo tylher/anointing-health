@@ -1,8 +1,9 @@
 "use client";
 
+import { CONTACT_DETAILS, MAP_IMAGE } from "@/data/contact-data";
 import { motion } from "framer-motion";
 import { ITEM } from "./UseReveal";
-import { CONTACT_DETAILS, MAP_IMAGE } from "@/data/contact-data";
+import Link from "next/link";
 
 export default function ContactDetails() {
   return (
@@ -27,15 +28,24 @@ export default function ContactDetails() {
               transition={{ duration: 0.2 }}
             >
               <span className="material-symbols-outlined text-primary">
-                <detail.icon/>
+                <detail.icon />
               </span>
               <div>
                 <p className="font-ui font-medium text-on-surface-variant">
                   {detail.label}
                 </p>
-                <p className="font-sans text-sm text-on-surface">
-                  {detail.value}
-                </p>
+                {detail.link ? (
+                  <Link
+                    href={detail.link}
+                    className="font-sans text-sm text-on-surface"
+                  >
+                    {detail.value}
+                  </Link>
+                ) : (
+                  <p className="font-sans text-sm text-on-surface">
+                    {detail.value}
+                  </p>
+                )}
               </div>
             </motion.div>
           ))}

@@ -56,7 +56,7 @@ export function PillarCard({
         whileHover={{ y: -4, transition: { duration: 0.25 } }}
       >
         <GradientBorderCard>
-          <div className="p-8 flex flex-col sm:flex-row gap-6 items-center">
+          <div className="py-8 px-4 md:p-8  flex flex-col sm:flex-row gap-6 items-center">
             <div className="flex-1">
               <motion.div
                 variants={iconVariant}
@@ -94,7 +94,7 @@ export function PillarCard({
       whileHover={{ y: -6, transition: { duration: 0.25 } }}
     >
       <GradientBorderCard>
-        <div className="p-6 flex flex-col gap-3 h-full">
+        <div className="px-4 py-6 md:p-6 flex flex-col gap-3 h-full">
           <motion.div
             variants={iconVariant}
             className={`w-10 h-10 rounded-full flex items-center justify-center ${iconClass}`}

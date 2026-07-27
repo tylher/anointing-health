@@ -5,7 +5,7 @@
 // ── CORS ─────────────────────────────────────────────────────────────
 // Replace with your actual deployed frontend origin (not "*") once you
 // know it, so random sites can't POST through your mailer.
-header("Access-Control-Allow-Origin: https://anointinghealthcare.co.uk/");
+header("Access-Control-Allow-Origin: https://anointinghealthcare.co.uk");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");
@@ -56,7 +56,7 @@ $name  = preg_replace('/[\r\n]+/', '', $name);
 $email = preg_replace('/[\r\n]+/', '', $email);
 
 // ── Compose email ────────────────────────────────────────────────────
-$to      = "you@anointinghealthcare.co.uk"; // <-- where you want to receive submissions
+$to      = "info@anointinghealthcare.co.uk"; // <-- where you want to receive submissions
 $subject = "New Contact Form Submission from $name";
 
 $body  = "Name: $name\n";

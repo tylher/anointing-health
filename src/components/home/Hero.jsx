@@ -57,7 +57,7 @@ const floatUp = {
 
 export default function Hero() {
   return (
-    <section className="hero-gradient min-h-[90vh] pt-16 pb-12 relative overflow-hidden flex items-center  px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)">
+    <section className="hero-gradient min-h-[90vh] pt-32 md:pt-16 pb-12 relative overflow-hidden flex items-center  px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)">
       {/* Background blobs */}
       <motion.div
         initial={{ scale: 0.8, opacity: 0 }}

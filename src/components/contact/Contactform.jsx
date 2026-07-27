@@ -1,15 +1,17 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useState } from "react";
 import { FORM_ROLE_OPTIONS } from "../../data/contact-data";
+import SuccessModal from "../common/SuccessModal";
 import { ITEM } from "./UseReveal";
 
 const fieldClass =
   "w-full bg-on-primary border border-outline-variant rounded-lg px-4 py-2 transition-all outline-none focus:ring-2 focus:ring-primary focus:border-primary font-sans text-on-background";
 
 // Point this at wherever contact-handler.php actually lives.
-const CONTACT_ENDPOINT = "https://anointinghealthcare.co.uk/contact-handler.php";
+const CONTACT_ENDPOINT =
+  "https://anointinghealthcare.co.uk/contact-handler.php";
 
 function Field({ label, children }) {
   return (
@@ -34,6 +36,7 @@ export default function ContactForm() {
   // idle | submitting | success | error
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const set = (key) => (e) => setForm((f) => ({ ...f, [key]: e.target.value }));
 
@@ -57,6 +60,7 @@ export default function ContactForm() {
       }
 
       setStatus("success");
+      setShowSuccess(true);
       setForm({
         name: "",
         email: "",
@@ -71,7 +75,10 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-surface-container-lowest p-8 rounded-xl border border-primary/10 shadow-[0_4px_20px_rgba(3,97,53,0.05)]" id='contact-form'>
+    <div
+      className="bg-surface-container-lowest p-8 rounded-xl border border-primary/10 shadow-[0_4px_20px_rgba(3,97,53,0.05)]"
+      id="contact-form"
+    >
       <motion.h2
         variants={ITEM}
         className="font-serif font-bold text-xl md:text-3xl  text-primary mb-6"
@@ -147,9 +154,12 @@ export default function ContactForm() {
           <p className="text-sm text-red-600 font-ui">{errorMsg}</p>
         )}
         {status === "success" && (
-          <p className="text-sm text-primary font-ui">
-            Thanks — your message has been sent. We'll be in touch soon.
-          </p>
+          <SuccessModal
+            isOpen={showSuccess}
+            onClose={() => setShowSuccess(false)}
+            title="Message Sent"
+            message="Thanks, your message has been sent. We'll be in touch soon."
+          />
         )}
 
         <motion.div variants={ITEM}>
