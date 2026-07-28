@@ -89,10 +89,10 @@ export default function Navbar() {
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={[
-          "fixed top-0 w-full z-70 transition-all duration-300",
+          "fixed top-0 max-w-screen z-70 transition-all duration-300",
           "flex justify-between items-center h-28",
           "px-(--spacing-page-x-mobile) md:px-(--spacing-page-x-desk)",
-          "max-w-[1280px] mx-auto left-0 right-0",
+          "lg:max-w-[1280px] left-0 right-0",
           scrolled ? "nav-scrolled" : "bg-transparent",
         ].join(" ")}
       >
@@ -215,7 +215,7 @@ export default function Navbar() {
         {/* Mobile burger */}
         <motion.button
           whileTap={{ scale: 0.9 }}
-          className="md:hidden p-2 text-[color:var(--color-primary)] text-2xl"
+          className="md:hidden p-2 text-[color:var(--color-primary)] text-2xl z-20"
           aria-label="Toggle menu"
           onClick={() => setMobileOpen((v) => !v)}
         >
@@ -232,7 +232,7 @@ export default function Navbar() {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="fixed inset-0 z-60 md:hidden flex flex-col pt-24 px-6 pb-10 overflow-y-auto"
+            className="fixed inset-0 z-60 w-screen not-open:md:hidden flex flex-col pt-24 px-6 pb-10 overflow-y-auto"
             style={{
               backgroundColor: "rgba(247,249,255,0.97)",
               backdropFilter: "blur(16px)",
