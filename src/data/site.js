@@ -24,7 +24,7 @@ export const navLinks = [
       },
       {
         label: "Mental Health Outreach",
-        href: "/services/mental-health",
+        href: "/services?service=mental-health",
         "mobile-href": "/services/mental-health",
         id: "mental-health",
       },

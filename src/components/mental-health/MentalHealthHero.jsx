@@ -108,7 +108,7 @@ export default function MentalHealthHero() {
         />
       ))}
 
-      <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-8 min-h-screen grid grid-cols-1 lg:grid-cols-[48%_52%] items-center gap-12 py-24">
+      <div className="relative z-10 max-w-[1280px] mx-auto px-6 lg:px-8 min-h-screen grid grid-cols-1 lg:grid-cols-[48%_52%] items-center gap-12 pb-24 pt-32 md:py-24">
         {/* Left column — text */}
         <div>
           <span className="block font-sans font-bold text-[11px] tracking-[0.16em] uppercase text-primary mb-4">

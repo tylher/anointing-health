@@ -5,7 +5,7 @@ import { MdFavorite } from "react-icons/md";
 
 export default function HeroSection() {
   return (
-    <section className="hero-bg pt-24 pb-20 px-lg relative px-7 md:px-20  max-w-screen">
+    <section className="hero-bg pt-32 md:pt-24 pb-20 px-lg relative px-7 md:px-20  max-w-screen">
       <div className="organic-shape" />
 
       <div className="max-w-7xl mx-auto relative z-10">

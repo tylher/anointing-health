@@ -4,7 +4,7 @@ import WhoWeServeSection from "@/components/approach/WhoWeServe";
 
 export default function HomePage() {
   return (
-    <main className="">
+    <main className="max-w-screen overflow-hidden">
       <HeroSection />
       <WhoWeServeSection />
       <DailyTimelineSection />
