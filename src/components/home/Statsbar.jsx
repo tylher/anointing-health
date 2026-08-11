@@ -171,7 +171,7 @@ export default function StatsBar() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? "visible" : "hidden"}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 stats-grid"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 stats-grid"
         >
           {stats.map((stat, i) => (
             <motion.div key={i} variants={itemVariants}>

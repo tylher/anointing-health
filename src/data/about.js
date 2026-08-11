@@ -27,10 +27,10 @@ export const badges = [
     label: "Est. in Cumbria",
     className: "bg-primary/10 text-primary",
   },
-  {
-    label: "CQC Regulated",
-    className: "bg-secondary-container/20 text-secondary-container",
-  },
+  // {
+  //   label: "CQC Regulated",
+  //   className: "bg-secondary-container/20 text-secondary-container",
+  // },
   {
     label: "12,000+ Supported",
     className: "bg-tertiary-container/10 text-tertiary-container",
@@ -194,11 +194,11 @@ export const safetyData = {
       className: "bg-white text-[#00522b]",
       delay: "340ms",
     },
-    {
-      label: "CQC Compliant",
-      className: "bg-[#E3EEF9] text-[#235492]",
-      delay: "420ms",
-    },
+    // {
+    //   label: "CQC Compliant",
+    //   className: "bg-[#E3EEF9] text-[#235492]",
+    //   delay: "420ms",
+    // },
   ],
 };
 

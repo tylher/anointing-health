@@ -61,9 +61,10 @@ export default function ClosingCTA() {
         </div>
 
         <p className="font-sans text-xs text-white/55">
-          Lines open 7 days · CQC regulated · DBS checked staff
+          Lines open 7 days · DBS checked staff
         </p>
       </motion.div>
     </section>
   );
 }
+// · CQC regulated

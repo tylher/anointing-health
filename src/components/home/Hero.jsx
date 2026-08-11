@@ -1,23 +1,19 @@
 "use client";
 
-import { heroImages, trustChips } from "@/data/site";
+import { heroImages } from "@/data/site";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
   MdAdminPanelSettings,
-  MdArrowDownward,
   MdArrowForward,
   MdEventAvailable,
   MdHealthAndSafety,
-  MdStarHalf,
-  MdStarRate,
-  MdVerified,
 } from "react-icons/md";
 
 /* ── Chip icons mapped by label ── */
 const chipIcons = {
-  "CQC Compliant": <MdVerified className="text-[color:var(--color-primary)]" />,
+  // "CQC Compliant": <MdVerified className="text-[color:var(--color-primary)]" />,
   "DBS Checked": (
     <MdAdminPanelSettings className="text-[color:var(--color-primary)]" />
   ),
@@ -205,7 +201,6 @@ export default function Hero() {
               fill
               className="object-cover transform -scale-x-100"
               priority
-              
             />
           </motion.div>
 
@@ -242,7 +237,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Credential card */}
-          <motion.div
+          {/* <motion.div
             className="absolute bottom-24 right-0 glass-card p-4 rounded-xl z-30 flex items-center gap-3"
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -257,8 +252,8 @@ export default function Hero() {
               }}
             >
               <MdHealthAndSafety />
-            </div>
-            <div>
+            </div> */}
+            {/* <div>
               <p
                 style={{
                   fontFamily: "var(--font-ui)",
@@ -288,7 +283,7 @@ export default function Hero() {
                   4.9/5
                 </span>
               </div>
-            </div>
+            </div> */}
           </motion.div>
 
           {/* Decorative dots */}
@@ -309,10 +304,8 @@ export default function Hero() {
               delay: 0.5,
             }}
           />
-        </motion.div>
+        {/* </motion.div> */}
       </div>
-
-     
     </section>
   );
 }

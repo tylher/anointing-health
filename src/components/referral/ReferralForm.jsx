@@ -14,7 +14,7 @@ import ProcessStep from "./Processstep";
 import SuccessModal from "../common/SuccessModal";
 
 const REFERRAL_ENDPOINT =
-  "https://anointinghealth.co.uk/api/referral-handler.php";
+  "https://anointinghealthcare.co.uk/referral-handler.php";
 
 export default function ReferralForm() {
   const [stepIndex, setStepIndex] = useState(0);
@@ -85,6 +85,7 @@ export default function ReferralForm() {
         throw new Error(
           data.error || "Something went wrong. Please try again.",
         );
+        return;
       }
 
       setStatus("success");
@@ -182,7 +183,7 @@ export default function ReferralForm() {
                   Referral Received
                 </h3>
                 <p className="text-on-surface-variant font-body-lg">
-                  Thank you — our care team will be in touch within 24 hours.
+                  Thank you - our care team will be in touch within 24 hours.
                 </p>
               </motion.div>
             ) : (

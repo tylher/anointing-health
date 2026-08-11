@@ -1,7 +1,6 @@
-import { legalLinks, quickLinks, services } from "@/data/site";
+import { quickLinks, services } from "@/data/site";
 import Image from "next/image";
 import Link from "next/link";
-import { MdVerified } from "react-icons/md";
 
 export default function Footer() {
   return (
@@ -67,7 +66,9 @@ export default function Footer() {
                   key={i}
                   className="text-[14px] opacity-90 hover:opacity-100 hover:text-white transition-all"
                 >
-                  <Link href={service.href} scroll={false}>{service.label}</Link>
+                  <Link href={service.href} scroll={false}>
+                    {service.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -80,21 +81,32 @@ export default function Footer() {
             </h4>
 
             <div className="flex flex-col gap-4">
-              <Link href="mailto:info@anointinghealthcare.co.uk" className="text-[14px] opacity-80">
+              <Link
+                href="mailto:info@anointinghealthcare.co.uk"
+                className="text-[14px] opacity-80"
+              >
                 Email: info@anointinghealthcare.co.uk
               </Link>
               <Link href="tel:+447307373405" className="text-[14px] opacity-80">
                 Phone: +44 7307 373405
               </Link>
+              <Link
+                href="https://maps.app.goo.gl/6dzKeHawegvLepb37"
+                target="_blank"
+                className="text-[14px] opacity-80"
+              >
+                Address: First Floor, Swan Buildings 20 Swan Street Manchester
+                M4 5JW GB
+              </Link>
 
-              <div className="mt-4 p-4 border border-white/20 rounded-lg inline-flex items-center gap-3">
+              {/* <div className="mt-4 p-4 border border-white/20 rounded-lg inline-flex items-center gap-3">
                 <span className="material-symbols-outlined text-white">
                   <MdVerified />
                 </span>
                 <span className="text-xs uppercase tracking-widest font-ui">
                   CQC Regulated
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

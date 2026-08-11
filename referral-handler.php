@@ -1,7 +1,7 @@
 <?php
 // referral-handler.php
 
-header("Access-Control-Allow-Origin: https://anointinghealth.co.uk");
+header("Access-Control-Allow-Origin: https://anointinghealthcare.co.uk");
 header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
 header("Content-Type: application/json");

@@ -61,7 +61,7 @@ export const navLinks = [
 
 /* ─── Hero trust chips ────────────────────────────────────── */
 export const trustChips = [
-  { label: "CQC Compliant" },
+  // { label: "CQC Compliant" },
   { label: "DBS Checked" },
   { label: "7 Days a Week" },
 ];
@@ -79,7 +79,7 @@ export const stats = [
   { type: "count", value: 12000, suffix: "+", label: "Individuals Supported" },
   { type: "count", value: 6, label: "Coverage Areas" },
   { type: "count", value: 7, label: "Days Weekly" },
-  { type: "icon", label: "CQC Regulated" },
+  // { type: "icon", label: "CQC Regulated" },
   { type: "static", value: "24/7", label: "Crisis Support" },
 ];
 
@@ -177,7 +177,7 @@ export const legalLinks = [
   { label: "Privacy Policy", href: "#" },
   { label: "Safeguarding Policy", href: "#" },
   { label: "Complaints", href: "#" },
-  { label: "CQC Information", href: "#" },
+  // { label: "CQC Information", href: "#" },
 ];
 
 export const socialLinks = [

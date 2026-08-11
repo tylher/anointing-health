@@ -1,6 +1,6 @@
 // ─── Hero ─────────────────────────────────────────────────────────────────────
 
-import { MdCall, MdMail, MdSchedule } from "react-icons/md";
+import { MdCall, MdLocationPin, MdMail, MdSchedule } from "react-icons/md";
 
 export const HERO = {
   heading: "Let's talk. We're here to help.",
@@ -69,6 +69,13 @@ export const FORM_ROLE_OPTIONS = [
 // ─── Contact details ──────────────────────────────────────────────────────────
 
 export const CONTACT_DETAILS = [
+  
+  {
+    icon: MdLocationPin,
+    label: "Address",
+    value: " First Floor, Swan Buildings 20 Swan Street Manchester M4 5JW GB",
+    link: "https://maps.app.goo.gl/6dzKeHawegvLepb37",
+  },
   {
     icon: MdMail,
     label: "Email",
@@ -89,7 +96,7 @@ export const CONTACT_DETAILS = [
 ];
 
 export const MAP_IMAGE = {
-  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuADRkkPwhVjWJ9TfNHMGWXZLWDy1eBbAjXOqF7q7z831l7qBJNgfOj4AIODYHT7og92dvo3KeR88O5myG_WZQkTeZF6N7rJRHz21PxFUtKPGk6eKFN3WglLJB1FT11c7iTmvUfUL2qe6dTu4RcsZUSPCZcKmCRevFZ2g1L2FvoY9KMJ8wONOekglo_9eQdMwEnc-3ogdzhddAG_t_pGZ3OcQV4dk4cLlNC2NR_x11E_Vv5vA-b8bk-uJr-61s8t3y_R7yelig4haM1C",
+  src: "/images/anointing-health-location.jpg",
   alt: "Map of the Cumbria region",
 };
 

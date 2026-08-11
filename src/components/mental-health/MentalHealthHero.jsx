@@ -205,14 +205,14 @@ export default function MentalHealthHero() {
             </div>
           </motion.div>
 
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.6 }}
             className="absolute bottom-10 left-[34%] bg-[#C9961A] text-[#181c20] font-sans font-bold text-xs px-[14px] py-1.5 rounded-full"
           >
             CQC Regulated Service
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
     </section>

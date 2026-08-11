@@ -32,12 +32,12 @@ export const FEATURE_PILLS = [
     bg: "bg-secondary-container/20",
     text: "text-on-secondary-container",
   },
-  {
-    icon: MdVerified,
-    label: "CQC Regulated",
-    bg: "bg-tertiary-container/10",
-    text: "text-tertiary",
-  },
+  // {
+  //   icon: MdVerified,
+  //   label: "CQC Regulated",
+  //   bg: "bg-tertiary-container/10",
+  //   text: "text-tertiary",
+  // },
   {
     icon: MdHub,
     label: "Multi-agency Coordination",

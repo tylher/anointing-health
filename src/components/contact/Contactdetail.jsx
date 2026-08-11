@@ -2,8 +2,8 @@
 
 import { CONTACT_DETAILS, MAP_IMAGE } from "@/data/contact-data";
 import { motion } from "framer-motion";
-import { ITEM } from "./UseReveal";
 import Link from "next/link";
+import { ITEM } from "./UseReveal";
 
 export default function ContactDetails() {
   return (
@@ -38,6 +38,7 @@ export default function ContactDetails() {
                   <Link
                     href={detail.link}
                     className="font-sans text-sm text-on-surface"
+                    target="_blank"
                   >
                     {detail.value}
                   </Link>
@@ -53,21 +54,23 @@ export default function ContactDetails() {
       </div>
 
       {/* Map */}
-      <motion.div
+      <motion.a
         variants={ITEM}
-        className="h-64 rounded-xl overflow-hidden border border-outline-variant/30 shadow-sm relative"
+        className="h-64 rounded-xl block overflow-hidden border border-outline-variant/30 shadow-sm relative"
         // Gentle scale-in so the map panel feels like it "loads in"
         initial={{ opacity: 0, scale: 0.97 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: "easeOut" }}
+        href="https://maps.app.goo.gl/6dzKeHawegvLepb37"
+        target="_blank"
       >
         <img
           src={MAP_IMAGE.src}
           alt={MAP_IMAGE.alt}
           className="absolute inset-0 w-full h-full object-cover"
         />
-      </motion.div>
+      </motion.a>
     </div>
   );
 }
