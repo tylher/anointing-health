@@ -5,7 +5,7 @@ import { MdCall, MdLocationPin, MdMail, MdSchedule } from "react-icons/md";
 export const HERO = {
   heading: "Let's talk. We're here to help.",
   image: {
-    src: "/images/contact-1.jpg",
+    src: "/images/contact-1.webp",
     alt: "Friendly healthcare receptionist answering phone call",
   },
 };
@@ -16,7 +16,7 @@ export const PATHWAY_CARDS = [
   {
     id: "support",
     image: {
-      src: "/images/contact-2.jpg",
+      src: "/images/contact-2.webp",
       alt: "Hand reaching out in support",
     },
     accentColor: "#036135", // primary
@@ -30,7 +30,7 @@ export const PATHWAY_CARDS = [
   {
     id: "refer",
     image: {
-      src: "/images/contact-3.jpg",
+      src: "/images/contact-3.webp",
       alt: "Healthcare professional reviewing notes",
     },
     accentColor: "#3f6dad", // tertiary-container
@@ -44,7 +44,7 @@ export const PATHWAY_CARDS = [
   {
     id: "partner",
     image: {
-      src: "/images/contact-4.jpg",
+      src: "/images/contact-4.webp",
       alt: "Professionals in a collaborative meeting",
     },
     accentColor: "#C9961A",
@@ -96,7 +96,7 @@ export const CONTACT_DETAILS = [
 ];
 
 export const MAP_IMAGE = {
-  src: "/images/anointing-health-location.jpg",
+  src: "/images/anointing-health-location.webp",
   alt: "Map of the Cumbria region",
 };
 

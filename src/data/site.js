@@ -68,9 +68,9 @@ export const trustChips = [
 
 /* ─── Hero images ─────────────────────────────────────────── */
 export const heroImages = {
-  primary: "/images/home-2.jpg",
-  secondary: "/images/home-1.jpg",
-  tertiary: "/images/home-3.jpg",
+  primary: "/images/home-2.webp",
+  secondary: "/images/home-1.webp",
+  tertiary: "/images/home-3.webp",
 };
 
 /* ─── Stats bar ───────────────────────────────────────────── */
@@ -88,7 +88,7 @@ export const whoWeHelpTabs = [
   {
     id: "individuals",
     label: "Individuals",
-    imageUrl: "/images/WWH1.jpg",
+    imageUrl: "/images/WWH1.webp",
     imageAlt: "Individuals Support",
     description:
       "Adults experiencing mental health challenges, isolation, or difficulty accessing traditional services.",
@@ -105,7 +105,7 @@ export const whoWeHelpTabs = [
   {
     id: "families",
     label: "Families & Carers",
-    imageUrl: "/images/WWH2.jpg",
+    imageUrl: "/images/WWH2.webp",
     imageAlt: "Families and Carers Support",
     description: "We support the people who support others.",
     checkItems: [
@@ -120,7 +120,7 @@ export const whoWeHelpTabs = [
   {
     id: "professionals",
     label: "Professionals & Referrers",
-    imageUrl: "/images/WWH3.jpg",
+    imageUrl: "/images/WWH3.webp",
     imageAlt: "Professionals and Referrers",
     description:
       "We work with NHS, local authority, and voluntary sector partners.",
@@ -196,7 +196,7 @@ export const WHO_WE_SERVE = [
       "Living with schizophrenia, bipolar disorder, or severe depression who need consistent community support",
     color: "#036135",
     icon: MdPsychology,
-    image: "/images/mental.jpg",
+    image: "/images/mental.webp",
   },
   {
     id: "risk-of-hospital",
@@ -205,7 +205,7 @@ export const WHO_WE_SERVE = [
       "Those experiencing escalating crisis who could benefit from intensive outreach to prevent acute admission",
     color: "#C9961A",
     icon: MdHealthAndSafety,
-    image: "/images/approach-3.jpg",
+    image: "/images/approach-3.webp",
   },
   {
     id: "isolated-individuals",
@@ -214,7 +214,7 @@ export const WHO_WE_SERVE = [
       "Older adults or those in rural areas who have disengaged from care or have limited social connections",
     color: "#235492",
     icon: MdPeopleAlt,
-    image: "/images/approach-2.jpg",
+    image: "/images/approach-2.webp",
   },
   {
     id: "personal-care",
@@ -223,7 +223,7 @@ export const WHO_WE_SERVE = [
       "Adults who need day-to-day assistance with personal care, medication, and daily living tasks",
     color: "#036135",
     icon: MdAccessibilityNew,
-    image: "/images/approach-4.jpg",
+    image: "/images/approach-4.webp",
   },
 ];
 
@@ -234,25 +234,25 @@ export const DAILY_TIMELINE = [
     id: "scene-1",
     time: "8:30am",
     description: "Morning check-in and route planning.",
-    image: "/images/morning-routines.jpg",
+    image: "/images/morning-routines.webp",
   },
   {
     id: "scene-2",
     time: "10:00am",
     description: "First home visit of the day.",
-    image: "/images/community-care.jpg",
+    image: "/images/community-care.webp",
   },
   {
     id: "scene-3",
     time: "1:00pm",
     description: "Lunch, conversation, and connection.",
-    image: "/images/conversations.jpg",
+    image: "/images/conversations.webp",
   },
   {
     id: "scene-4",
     time: "4:00pm",
     description: "Care notes updated, ready for tomorrow.",
-    image: "/images/care-notes.jpg",
+    image: "/images/care-notes.webp",
   },
 ];
 
@@ -349,7 +349,7 @@ export const HERO = {
   heading: "Whoever you are, we're here",
   subheading:
     "We support adults of all backgrounds who are finding it hard to manage their mental health, live independently, or access mainstream services. You don't need to be in crisis to reach out.",
-  heroBannerImage: "/images/approach-1.jpg",
+  heroBannerImage: "/images/approach-1.webp",
   // ctaPrimary: { label: "Am I eligible?", href: "#eligibility" },
   cta: { label: "Talk to us first", href: "/contact" },
   floatingChip: "Every story matters",

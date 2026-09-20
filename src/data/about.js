@@ -40,14 +40,14 @@ export const badges = [
 export const collageImages = [
   {
     id: 1,
-    src: "/images/about-hero-2.jpg",
+    src: "/images/about-hero-2.webp",
     alt: "Healthcare professionals standing together",
     className:
       "absolute right-[10%] top-[10%] w-[55%] h-[65%] rounded-[28px] z-20",
   },
   {
     id: 2,
-    src: "/images/about-hero-4.jpg",
+    src: "/images/about-hero-4.webp",
     alt: "Care worker supporting elderly woman",
     className:
       "absolute left-[5%] top-[5%] w-[40%] h-[45%] rounded-[20px] z-30 -translate-y-6 border-4 border-white",
@@ -55,21 +55,21 @@ export const collageImages = [
   },
   {
     id: 3,
-    src: "/images/about-hero-3.jpg",
+    src: "/images/about-hero-3.webp",
     alt: "Hands writing on clipboard",
     className:
       "absolute left-[35%] top-[35%] w-[35%] h-[35%] rounded-full z-40 border-[5px] border-white",
   },
   {
     id: 4,
-    src: "/images/about-hero-1.jpg",
+    src: "/images/about-hero-1.webp",
     alt: "Administrative staff working together",
     className:
       "absolute left-[10%] bottom-[5%] w-[45%] h-[35%] rounded-[20px] z-10",
   },
   {
     id: 5,
-    src: "/images/about-hero-5.jpg",
+    src: "/images/about-hero-5.webp",
     alt: "Service user enjoying time with care staff",
     className:
       "absolute right-[5%] bottom-[15%] w-[30%] h-[25%] rounded-full z-30",
@@ -117,7 +117,7 @@ export const valueCards = [
   },
 ];
 export const clinicalApproach = {
-  image:'/images/anointing-health-leader.jpg',
+  image:'/images/anointing-health-leader.webp',
   quote: "Clinical excellence is a human relationship.",
   author: "Adewale Adeleke",
   role: "Community Outreach Lead",
@@ -129,7 +129,7 @@ export const pillars = [
   {
     featured: true,
     image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDbgTdlcw_02B0v1JuQGbxVs1NFURNr1gnM2kZiMJSzFZ6KuYgfjwtZO9h1ziEuPrWmUWryLhzFVeOnjgBA7QZbZ_ZUgcgnpm4ts7bRz0TSHTXITUAoieJPYyQ4DHtRbExL3OMlPJcjhwiRdC598deTou7ThmksQEF9aTU6XoHiQOOL7ykLItnIgV1OJHxv-rJtBMmKuBUkpzr5Nibf_5wab_OdNe-Jk22vwEbcsjkeTtlMu7FKTO3mS5OsJZi3dj9VM38TZONYEp6W",
+      "/images/crisis-intervention.webp",
     icon: MdHealthAndSafety,
     title: "Crisis Intervention",
     description:
@@ -169,7 +169,7 @@ export const pillars = [
 
 export const safetyData = {
   backgroundImage:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuCv0CJhwRaU5r8zz9Gaxm4BNzYW2NZ_Wd-uD7zcyBNNFq64JerlkRQwgelmepR2FRvPwq4UuNHcNbm-js41sWtR-jmLEYHtyxE06Qmw9QcZY1Rk5G7wjVifDni3ACC9xhvcoIsM_n_BytjvnnqwbeIU37EkruSf-sm34vmPnPtXZ3Dm78DPWpwBUAx9SqmfyfNfTHUcDBnRCu1iLYyj1NmJteVwJf-tnPlL3MNFw1-_UBVn2Bl8ADFngnOkRSHToNqvSK0OjSO5KQA_",
+    "/images/safety-hero.webp",
 
   icon: MdShield,
 

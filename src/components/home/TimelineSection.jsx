@@ -36,7 +36,7 @@ export default function TimelineSection() {
       <div
         className="absolute inset-0 z-0 bg-cover bg-center bg-fixed w-full"
         style={{
-          backgroundImage: "url('/images/JWU1.jpg')",
+          backgroundImage: "url('/images/JWU1.webp')",
         }}
       >
         <div className="absolute inset-0 bg-[#00522b]/82 opacity-40 backdrop-blur-3xl"></div>

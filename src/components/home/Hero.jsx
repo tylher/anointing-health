@@ -8,7 +8,6 @@ import {
   MdAdminPanelSettings,
   MdArrowForward,
   MdEventAvailable,
-  MdHealthAndSafety,
 } from "react-icons/md";
 
 /* ── Chip icons mapped by label ── */

@@ -8,7 +8,6 @@ import {
   MdHub,
   MdSpeed,
   MdTimer,
-  MdVerified,
 } from "react-icons/md";
 
 export const HERO_BADGE = "FOR PROFESSIONALS";
@@ -47,7 +46,7 @@ export const FEATURE_PILLS = [
 ];
 
 export const HERO_IMAGE = {
-  src: "/images/healthcare-provider.jpg",
+  src: "/images/healthcare-provider.webp",
   alt: "Professional documentary-style photography for a healthcare website. A female GP or senior nurse in her 40s, wearing a stethoscope, seated at a clean modern desk in a bright UK clinical office. She is focused but calm while reviewing patient notes on a laptop. Soft natural window light, warm-lifted shadows, high-quality editorial photography. Forest green accents in the background.",
 };
 

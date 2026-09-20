@@ -2,8 +2,7 @@
 
 export const HERO = {
   heading: "Real change. Real people.",
-  backgroundImage:
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuBgtf3VDbXIpJipfjMQeJ_nl-GC0ZYjrv-O7oOF6rNTl5D6-NRFb3iCd8r6sjfJwDXjD3lHNRPDzr7YgebkO2PQ2EEBiZFykg6CUpbCBquljjMqglVLwVBhxFlFcZsmgjqnXMXg934mZ6MEkrGNK7hR-ozLG2PfsoOqao68Q6ixtkv4tA6fQ2PVOm-tXaeKcf0n68lqPOz9FHmgdF3XSNsmOct2wGe0G4-PAorFlwG3VGCzmoyQs0t0fjNhxKJdR3lJbBZDPf98EncN",
+  backgroundImage: "/images/real-people.webp",
 };
 
 // `animated: true` cards count up from 0 on scroll.
@@ -54,7 +53,7 @@ export const IMPACT_AREAS = [
   {
     id: "area-admissions",
     image: {
-      src: "/images/ease-acute.jpg",
+      src: "/images/ease-acute.webp",
       alt: "Reduced Hospital Admissions",
     },
     badgeBg: "bg-primary",
@@ -66,7 +65,7 @@ export const IMPACT_AREAS = [
   {
     id: "area-ae",
     image: {
-      src: "/images/avoid-crisis.jpg",
+      src: "/images/avoid-crisis.webp",
       alt: "Lower A&E Demand",
     },
     badgeBg: "bg-secondary-container",
@@ -78,7 +77,7 @@ export const IMPACT_AREAS = [
   {
     id: "area-independence",
     image: {
-      src: "/images/daily-living.jpg",
+      src: "/images/daily-living.webp",
       alt: "Improved Independence",
     },
     badgeBg: "bg-tertiary-container",
@@ -90,7 +89,7 @@ export const IMPACT_AREAS = [
   {
     id: "area-isolation",
     image: {
-      src: "/images/fostering-connection.jpg",
+      src: "/images/fostering-connection.webp",
       alt: "Reduced Isolation",
     },
     badgeBg: "bg-primary",
@@ -139,28 +138,23 @@ export const PROGRESS_GRADIENT =
 export const TRUSTED_LOGOS = [
   {
     id: "logo-nhs",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAEWCXDaHvAlO2YcqHe4Z7lryHADzqdnXjZrSeaJt-rPmdXZxRLUXcF_Zu2VKJxcuMoYrpfupOfC11OTnA2G7GGjybYDU6HWbCoxdMOylRYQEvt3BtaXpqqiW4fFfFvjwXFtpLbW9tUmUKJI3hN-7o-4v8J_EjHJDQmFIx7ludhbdlpyz7oP2xa_ADPw0CAtDes06RrT7_b83MPQj8ptIZbTS4IekuvQmgWThD8WjEoS3Il6VNHB7ww8lTQ1L_kt-16koZVArKNi424",
+    src: "/images/NHS.webp",
     alt: "NHS",
   },
   {
     id: "logo-local-authority",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAZV7nlX3v0SFQ0-ayCcu5hlbrccGpcgYeRm_QmEfKXv-i0obnrZNayMKE0ZC4y3spWKPwp5pbyj2SJIlpK40b9snzb-H7lLBUI_WDKINmii8I6ambgIcCwA4o6NBXwOzHEFcm1XrUHxOO9bBxLZ44s35mh4Xkm5R6QX1p1aIfGcSNyNox2f2CYB4YhcXBXhCzNWptZo5j7iYviZumqAwqSB4AJOqa5bed82N63mHXtO5cUHJP62OTJoG6H2ppwWiv22nxLZEunwi1O",
+    src: "/images/CLA.webp",
     alt: "Local Authority",
   },
   {
     id: "logo-icb",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAtUTOmenlilCi-HYrj68nhZ1NAhR5V76aLCdkkrtIeVBa3skJ3XEQxFuQ7ljKOJfHafqDsWjdYaKLAiigxvZtAM5JW9NQyVZJVqRv98wAmU8WyvKwG5_ir17vGP4gY9VJW8lmvfjs0qqLJhi5ydh7rUtbf2FFPLu5hzLKv63wHGdmAMFHOGqFWHLB3dEQ0ZX9Sxegch6eUEdMfOKlOZgq7Z42qJ1RCGVp0TOj9YDLCgn5GmJTaVh1aPO8O2lA2KuJanALRm8oR4D5b",
+    src: "/images/ICB.webp",
     alt: "ICB",
   },
   {
     id: "logo-housing",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBgiMbO0xJPENYmHQubnIuGivLVSDZ6HildGcXGXm9fsg1288oN7ib1ecBR6fPEai2p1It_ZVVs2Ms7sa7PjWpCwMEkdf-9SuWTtdb4lB-sT0afuIzSENe7Sq9xvpFZx8Ptt5yXrp2A0pVPThEmGBU-ZeoglpjdRc0kyI_s1mssdDv5-qOLwPR5z9GjNfpdWDLF1gfcgsTs9PsBRRQqRI0EcfIMIogiql60mPDQ1GsBZ67sEH91bjBNXLbS-9GUk-qfRjW6aC4o5-qn",
+    src: "/images/uk-association.webp",
     alt: "Housing Association",
-  },
-  {
-    id: "logo-voluntary",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAxA3I9SuwwG1Y3uwBQmI7DdhdJT8SmAUq7ew-ICnxpn_2Jc4TXsQ5O7JmBSJQ3IDjCKoNDwF3Q0VaOs7kc4qI44HZFFuH1oumC2-_Ebxzw_axz_4mXFncDkJWXakEACEdXWrXMMiv3zmMg2tSIKPrvcAkP6EZAQ2sFabQtH0KoOwENbwkv27vx6vLliIIc__5RJ63jgn-aqDl9CXAIdAGSXXajp1zx",
-    alt: "Voluntary Partner",
   },
 ];
 

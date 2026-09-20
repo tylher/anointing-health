@@ -13,7 +13,7 @@ export default function CQCComplianceSection() {
           <div className="fade-up w-full ">
             <div className="relative aspect-5/5 overflow-hidden rounded-[20px] shadow-lg h-125 w-full">
               <Image
-                src="/images/about-verified.jpg"
+                src="/images/about-verified.webp"
                 alt="Care worker holding clinical care plan"
                 fill
                 className="object-cover"

@@ -7,7 +7,7 @@ export const timelineSteps = [
     description: "GP, crisis team, hospital, or self-refer",
     images: [
       {
-        src: "/images/JWU2.jpg",
+        src: "/images/JWU2.webp",
         alt: "Phone call",
       },
     ],
@@ -19,7 +19,7 @@ export const timelineSteps = [
     description: "First contact within 24 hours, home visit arranged",
     images: [
       {
-        src: "/images/JWU3.jpg",
+        src: "/images/JWU3.webp",
         alt: "Arriving at door",
       },
     ],
@@ -31,7 +31,7 @@ export const timelineSteps = [
     description: "Personalised biopsychosocial care plan, built with you",
     images: [
       {
-        src: "/images/JWU4.jpg",
+        src: "/images/JWU4.webp",
         alt: "Assessment",
       },
     ],
@@ -43,7 +43,7 @@ export const timelineSteps = [
     description: "Regular visits, reviews, and safe discharge when ready",
     images: [
       {
-        src: "/images/JWU5.jpg",
+        src: "/images/JWU5.webp",
         alt: "Independent living",
       },
     ],

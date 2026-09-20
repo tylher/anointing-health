@@ -14,7 +14,7 @@ export const servicesData = [
     title: "Mental Health Outreach",
     description:
       "Proactive, community-based support designed to engage individuals who may be struggling to access traditional services, helping prevent crisis and promote recovery.",
-    imageUrl: "/images/mental.jpg",
+    imageUrl: "/images/mental.webp",
     href: "/services/mental-health",
     isFeatured: true,
     badge: "Core Service",
@@ -24,7 +24,7 @@ export const servicesData = [
     title: "Home Care Services",
     description:
       "Compassionate daily assistance to help you or your loved one live independently and comfortably at home.",
-    imageUrl: "/images/homecare.jpg",
+    imageUrl: "/images/homecare.webp",
     href: "/services?service=home-care",
     isFeatured: false,
   },
@@ -33,7 +33,7 @@ export const servicesData = [
     title: "Elderly & Dementia Care",
     description:
       "Specialised, patient-centred care fostering dignity, memory support, and a safe living environment.",
-    imageUrl: "/images/elderlycare.jpg",
+    imageUrl: "/images/elderlycare.webp",
     href: "/services?service=elderly",
     isFeatured: false,
   },
@@ -42,7 +42,7 @@ export const servicesData = [
     title: "Disability Support",
     description:
       "Empowering individuals with disabilities to actively participate in their community and achieve personal goals.",
-    imageUrl: "/images/disability-support.jpg",
+    imageUrl: "/images/disability-support.webp",
     href: "/services?service=disability",
     isFeatured: false,
   },
@@ -51,7 +51,7 @@ export const servicesData = [
     title: "Crisis Prevention",
     description:
       "Responsive interventions designed to de-escalate situations and maintain stability before hospitalisation is needed.",
-    imageUrl: "/images/crisis-prevention.jpg",
+    imageUrl: "/images/crisis-prevention.webp",
     href: "/services?service=crisis",
     isFeatured: false,
   },
@@ -60,7 +60,7 @@ export const servicesData = [
     title: "Carer Support",
     description:
       "Respite and guidance for family members, ensuring they have the strength and resources to continue caring.",
-    imageUrl: "/images/carer-support.jpg",
+    imageUrl: "/images/carer-support.webp",
     href: "/services?service=carer",
     isFeatured: false,
   },
@@ -128,7 +128,7 @@ export const services = [
      'Meal preparation',
      'Mobility assistance'
     ],
-    image: "/images/home-care.jpg",
+    image: "/images/home-care.webp",
   },
   {
     id: "mental-health",
@@ -148,7 +148,7 @@ export const services = [
       "7 days a week availability",
     ],
     link: "/services/mental-health",
-    image: "/images/mental-outreach2.jpg",
+    image: "/images/mental-outreach2.webp",
   },
   {
     id: "elderly",
@@ -168,7 +168,7 @@ export const services = [
       'Daily living support',
       'Falls prevention'
     ],
-    image: "/images/elderly-care.jpg",
+    image: "/images/elderly-care.webp",
   },
   {
     id: "disability",
@@ -187,7 +187,7 @@ export const services = [
       'Community access',
       'Daily routines assistance'
     ],
-    image: "/images/disability-support2.jpg",
+    image: "/images/disability-support2.webp",
   },
   {
     id: "crisis",
@@ -207,7 +207,7 @@ export const services = [
       "Experienced crisis staff",
       "AMHP coordination",
     ],
-    image: "/images/crisis-prevention2.jpg",
+    image: "/images/crisis-prevention2.webp",
   },
   {
     id: "carer",
@@ -227,7 +227,7 @@ export const services = [
       "Resource signposting",
       "Peer support referrals",
     ],
-    image: "/images/carer-support2.jpg",
+    image: "/images/carer-support2.webp",
   },
 ];
 
@@ -237,42 +237,42 @@ export const howItWorksSteps = [
     title: "Referral submitted",
     description:
       "Your journey begins with a simple referral from a GP, social worker, or family member.",
-    image: "/images/referral-placed.jpg",
+    image: "/images/referral-placed.webp",
   },
   {
     number: "02",
     title: "Rapid acknowledgement",
     description:
       "We respond within 24 hours to confirm receipt and begin coordinating your initial consultation.",
-    image: "/images/referral-acknowledgement.jpg",
+    image: "/images/referral-acknowledgement.webp",
   },
   {
     number: "03",
     title: "Home assessment arranged",
     description:
       "Our clinical lead visits your home to understand your environment, needs, and personal goals.",
-    image: "/images/home-assessment.jpg",
+    image: "/images/home-assessment.webp",
   },
   {
     number: "04",
     title: "Personalised care plan created",
     description:
       "We co-design a detailed clinical pathway tailored specifically to your health and wellbeing.",
-    image: "/images/curated-plan.jpg",
+    image: "/images/curated-plan.webp",
   },
   {
     number: "05",
     title: "Regular visits begin",
     description:
       "Your dedicated care team starts scheduled visits, providing consistent and compassionate support.",
-    image: "/images/regular-visits.jpg",
+    image: "/images/regular-visits.webp",
   },
   {
     number: "06",
     title: "Review, adapt, and plan discharge",
     description:
       "We continually monitor your progress, adjusting the plan to ensure optimal outcomes and independence.",
-    image: "/images/plan-review.jpg",
+    image: "/images/plan-review.webp",
   },
 ];
 
@@ -316,8 +316,8 @@ export const comparisonRows = [
 ];
 
 export const heroImages = {
-  left: "/images/service-hero-1.jpg",
-  right: "/images/service-hero-2.jpg",
+  left: "/images/service-hero-1.webp",
+  right: "/images/service-hero-2.webp",
 };
 
-export const ctaBackgroundImage = '/images/service-cta.jpg';
+export const ctaBackgroundImage = '/images/service-cta.webp';

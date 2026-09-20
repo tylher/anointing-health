@@ -11,7 +11,7 @@ export default function Footer() {
           {/* BRAND */}
           <div className="flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-2 group">
-              <Image src={"/images/logo.png"} width={65} height={65} />
+              <Image src={"/images/logo.webp"} width={65} height={65} />
             </Link>
             <p className="text-[14px] opacity-90 leading-relaxed font-sans">
               Providing person-centred care that empowers individuals to live

@@ -1,6 +1,4 @@
 import Image from "next/image";
-import { MdStar } from "react-icons/md";
-
 export function PhotoCollage({ images }) {
   return (
     <div className="relative  h-150 lg:h-125">

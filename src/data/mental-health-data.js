@@ -20,12 +20,12 @@ export const heroTrustChips = [
 // calm/engaged expressions; outdoor for outreach, indoor for support,
 // lived-in (not clinical) for live-in care.
 export const heroPhotos = {
-  main: "/images/mental-1.jpg",
-  secondary: "/images/mental-2.jpg",
+  main: "/images/mental-1.webp",
+  secondary: "/images/mental-2.webp",
 };
-export const outreachStickyPhoto = "/images/mental-3.jpg";
-export const quoteBreakPhoto = "/images/mental-4.jpg";
-export const liveInCarePhoto = "/images/livein-care.jpg";
+export const outreachStickyPhoto = "/images/mental-3.webp";
+export const quoteBreakPhoto = "/images/mental-4.webp";
+export const liveInCarePhoto = "/images/livein-care.webp";
 
 export const outreachCards = [
   {
@@ -102,7 +102,7 @@ export const supportPanels = [
     color: "#036135",
     tint: "#a3f4ba",
     title: "Emotional Wellbeing Support",
-    photo: "/images/mental-5.jpg",
+    photo: "/images/mental-5.webp",
     teaser: "Active listening, emotional validation, and a consistent, trusted presence.",
     description:
       "We provide non-judgemental emotional support in the person's home, helping them feel heard and understood. Our workers are trained to recognise deteriorating mental state and escalate appropriately. Sessions are unscripted - following the person's agenda, not a checklist.",
@@ -114,7 +114,7 @@ export const supportPanels = [
     color: "#235492",
     tint: "#d5e3ff",
     title: "Structured Routines",
-    photo: "/images/mental-6.jpg",
+    photo: "/images/mental-6.webp",
     teaser: "Building the daily framework that underpins recovery and prevents relapse.",
     description:
       "We work collaboratively with each person to establish morning, afternoon, and evening routines that balance activity, self-care, and rest. Structure reduces anxiety, improves sleep, and creates a sense of purpose - particularly in the early stages of recovery. We review and adapt routines at every visit, never imposing rigidity.",
@@ -126,7 +126,7 @@ export const supportPanels = [
     color: "#C9961A",
     tint: "#ffdea3",
     title: "Recovery-Focused Care Plans",
-    photo: "/images/mental-7.jpg",
+    photo: "/images/mental-7.webp",
     teaser:
       "Every care plan is built with you — capturing your goals, strengths, and the support you need to move forward.",
     description:
