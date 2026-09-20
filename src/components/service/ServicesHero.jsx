@@ -6,17 +6,22 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import RevealUp from "./RevealUp";
 
-// Two accent tones pulled from the fixed-dim tier of the design system —
-// they read clearly against the dark gradient overlay without fighting
-// the white body copy the way the full-saturation primary/secondary do.
 const ACCENT_MINT = "#88d8a0"; // --color-primary-fixed-dim
 const ACCENT_GOLD = "#f6be43"; // --color-secondary-fixed-dim
 
-// heroImages currently only exposes `left`/`right`, so those become the
-// two slides in the loop. If you later add more images to heroImages
-// (e.g. a `gallery` array), swap this line to read from that instead —
-// everything else here just maps over LOOP_IMAGES.
-const LOOP_IMAGES = [heroImages.left, heroImages.right].filter(Boolean);
+// Each slide pairs the image source with its own alt text.
+// Update the alt strings so they describe what's actually in each photo.
+const LOOP_IMAGES = [
+  {
+    src: heroImages.left,
+    alt: "A carer sharing a warm moment with an older client in their home",
+  },
+  {
+    src: heroImages.right,
+    alt: "A support worker talking with a client during a community outreach visit",
+  },
+].filter((image) => Boolean(image.src));
+
 const SLIDE_SECONDS = 6;
 
 export default function ServicesHero() {
@@ -30,20 +35,16 @@ export default function ServicesHero() {
     return () => clearInterval(id);
   }, []);
 
+  const current = LOOP_IMAGES[activeImage];
+
   return (
     <section className="relative w-full min-h-screen overflow-hidden">
-      {/* Full-bleed image loop. AnimatePresence's default "sync" mode lets
-          the outgoing and incoming slide animate at the same time, which
-          is what gives the crossfade — the old one fades out while the
-          new one fades in, rather than a hard cut or a flash of nothing
-          between them. Each slide also drifts through a slow Ken Burns
-          zoom for the full time it's on screen. */}
       <div className="absolute inset-0">
         <AnimatePresence mode="sync">
           <motion.img
             key={activeImage}
-            src={LOOP_IMAGES[activeImage]}
-            alt=""
+            src={current.src}
+            alt={current.alt}
             className="absolute inset-0 w-full h-full object-cover"
             initial={{ opacity: 0, scale: 1 }}
             animate={{ opacity: 1, scale: 1.08 }}
