@@ -51,6 +51,9 @@ export default function ServicesSection() {
                   >
                     <img
                       alt={service.title}
+                      width={800}
+                      height={600}
+                      sizes="(min-width: 1024px) 33vw, 100vw"
                       className="card-img w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                       src={service.imageUrl}
                     />

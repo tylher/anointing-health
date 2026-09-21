@@ -98,7 +98,7 @@ export default function Navbar() {
       >
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 group">
-          <Image src={"/images/logo.webp"} width={70} height={70} />
+          <Image src={"/images/logo.webp"} width={70} height={70} alt="Anointing health logo" priority />
         </Link>
 
         {/* Desktop links */}
