@@ -10,7 +10,7 @@ export default function PhotoBreakSection() {
         className="absolute inset-0 bg-fixed bg-cover"
         style={{
           backgroundImage:
-            "url('https://lh3.googleusercontent.com/aida-public/AB6AXuAh2Ih1Mu4YI7zeecxHVcBRNa1duvsWn0Mo4RkDa6I3ylhgAvXfDwHXX-SMsLDVN48R8_zzPToL6zMrYIZiRonRZ3aX6IeYNf79cIQkYPo2zSl3bsG7EL8oY9xYh4yOU1AvOwKlIX59U-KOA4i3hGrzh-EAZM8_uu9y1d2Fv_LXGpmbNJyuRB2n6DHyXC49ZKBe--uYTCwTDRUi8qr8uJVsY7FB68AOzyPBUqJ_43bekGV_MDH3w1lqDzZTjTmWHK5odch2JI7miPxr')",
+            "url('/images/PB.webp')",
           backgroundPosition: "center 30%",
         }}
       />
