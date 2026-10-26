@@ -117,7 +117,7 @@ export const valueCards = [
   },
 ];
 export const clinicalApproach = {
-  image:'/images/anointing-health-leader.webp',
+  image: "/images/anointing-health-leader.jpeg",
   quote: "Clinical excellence is a human relationship.",
   author: "Adewale Adeleke",
   role: "Community Outreach Lead",
@@ -128,8 +128,7 @@ export const clinicalApproach = {
 export const pillars = [
   {
     featured: true,
-    image:
-      "/images/crisis-intervention.webp",
+    image: "/images/crisis-intervention.webp",
     icon: MdHealthAndSafety,
     title: "Crisis Intervention",
     description:
@@ -168,8 +167,7 @@ export const pillars = [
 ];
 
 export const safetyData = {
-  backgroundImage:
-    "/images/safety-hero.webp",
+  backgroundImage: "/images/safety-hero.webp",
 
   icon: MdShield,
 

@@ -3,7 +3,8 @@
  * Batch-optimise the .webp files in public/images.
  *
  *   node scripts/optimize-images.mjs --dry      # show before/after, write nothing
- *   node scripts/optimize-images.mjs            # optimise in place
+ *   node scripts/optimize-images.mjs            # optimise every .webp in place
+ *   node scripts/optimize-images.mjs --only logo.webp,JWU2.webp,JWU3.webp   # just these files
  *   node scripts/optimize-images.mjs --remote "<full image url>" --name hero-bg
  *                                                # download + optimise a hotlinked image
  *
@@ -25,34 +26,52 @@ const IMG_DIR = path.join(ROOT, "public", "images");
 const BACKUP_DIR = path.join(ROOT, "image-originals");
 
 // ---- Per-file rules -------------------------------------------------------
-// width = max output width in px (never upscales). quality = WebP quality.
-const CARD = { width: 1000, quality: 70 };
-const THUMB = { width: 800, quality: 70 };
+// width = max output width in px (never upscales). quality = WebP quality (0-100).
+//
+// IMPORTANT: most of your images sit in slots with `object-cover`. When the slot is
+// taller/narrower than the image, the browser scales the image until its HEIGHT fills
+// the slot, then crops the sides. So the slot's height (x2 for retina) is what matters,
+// not the slot's width. Shrinking these images makes them blurry, so the rules below
+// keep the original dimensions (width 1600 is just a ceiling) and only re-compress.
+const KEEP_SIZE = { width: 1600, quality: 76 };
+const CARD = { width: 1600, quality: 80 };
+const THUMB = { width: 1280, quality: 80 };
 
 const RULES = {
-  // ~105x124 slot -> 2x is 210px wide
-  "logo.webp": { width: 210, quality: 80 },
+  // Logo: slot ~105x124 has the same shape as the file, so shrinking is safe.
+  // 320px wide covers 3x phone screens.
+  "logo.webp": { width: 320, quality: 85 },
 
   // full-bleed CSS background
-  "JWU1.webp": { width: 1600, quality: 70 },
+  "JWU1.webp": { width: 1920, quality: 80 },
 
-  // small thumbnails (331px wide on mobile, 120x80 on md+)
+  // thumbnails (wide banners in small slots; slot height decides the size needed)
   "JWU2.webp": THUMB,
   "JWU3.webp": THUMB,
   "JWU4.webp": THUMB,
   "JWU5.webp": THUMB,
 
-  // card images
+  // home-page card images
   "mental.webp": CARD,
   "homecare.webp": CARD,
   "disability-support.webp": CARD,
   "elderlycare.webp": CARD,
   "crisis-prevention.webp": CARD,
   "WWH1.webp": CARD,
+
+  // services page (tall scroll panels, so no resizing)
+  "disability-support2.webp": { width: 1600, quality: 74 }, // 342 KiB, the heaviest
+  "service-cta.webp": { width: 1600, quality: 76 },
+  "service-hero-1.webp": { width: 1600, quality: 78 },
+  "elderly-care.webp": KEEP_SIZE,
+  "home-care.webp": KEEP_SIZE,
+  "mental-outreach2.webp": KEEP_SIZE,
+  "crisis-prevention2.webp": KEEP_SIZE,
+  "carer-support2.webp": KEEP_SIZE,
 };
 
-// Any other .webp in the folder (services page images, home-2, carer-support...)
-const DEFAULT_RULE = { width: 1200, quality: 72 };
+// Any other .webp in the folder (home-2, carer-support, PB...)
+const DEFAULT_RULE = { width: 1600, quality: 82 };
 
 // ---- Helpers --------------------------------------------------------------
 const args = process.argv.slice(2);
@@ -62,9 +81,16 @@ const opt = (n) => {
   return i >= 0 ? args[i + 1] : undefined;
 };
 const DRY = flag("--dry");
+const ONLY = opt("--only")
+  ?.split(",")
+  .map((f) => f.trim());
 
 const kib = (b) => (b / 1024).toFixed(1).padStart(7) + " KiB";
-const exists = (p) => fs.access(p).then(() => true, () => false);
+const exists = (p) =>
+  fs.access(p).then(
+    () => true,
+    () => false,
+  );
 
 async function encode(buf, rule) {
   const meta = await sharp(buf).metadata();
@@ -93,13 +119,16 @@ async function optimiseLocal(name) {
 
   // Not worth a lossy re-encode for less than a 10% gain.
   if (after > before * 0.9) {
-    return console.log(`keep   ${name.padEnd(28)} already small (${kib(before)})`);
+    return console.log(
+      `keep   ${name.padEnd(28)} already small (${kib(before)})`,
+    );
   }
 
   console.log(
     `${DRY ? "would " : "done  "} ${name.padEnd(28)} ${dims.padEnd(24)} ${kib(before)} -> ${kib(after)}  (-${(
-      (1 - after / before) * 100
-    ).toFixed(0)}%)`
+      (1 - after / before) *
+      100
+    ).toFixed(0)}%)`,
   );
 
   if (!DRY) {
@@ -118,12 +147,14 @@ async function optimiseRemote(url, name) {
   if (res.skip) throw new Error("Remote image is animated; not converting.");
   const out = path.join(IMG_DIR, `${name}.webp`);
   console.log(
-    `remote ${name}.webp  ${res.meta.width}x${res.meta.height} -> ${res.info.width}x${res.info.height}  ${kib(buf.length)} -> ${kib(res.data.length)}`
+    `remote ${name}.webp  ${res.meta.width}x${res.meta.height} -> ${res.info.width}x${res.info.height}  ${kib(buf.length)} -> ${kib(res.data.length)}`,
   );
   if (!DRY) {
     await fs.mkdir(IMG_DIR, { recursive: true });
     await fs.writeFile(out, res.data);
-    console.log(`\nSaved ${path.relative(ROOT, out)}. Now point your CSS/JSX at "/images/${name}.webp".`);
+    console.log(
+      `\nSaved ${path.relative(ROOT, out)}. Now point your CSS/JSX at "/images/${name}.webp".`,
+    );
   }
 }
 
@@ -132,7 +163,17 @@ const remote = opt("--remote");
 if (remote) {
   await optimiseRemote(remote, opt("--name") ?? "remote-bg");
 } else {
-  const files = (await fs.readdir(IMG_DIR)).filter((f) => f.toLowerCase().endsWith(".webp")).sort();
+  let files = (await fs.readdir(IMG_DIR))
+    .filter((f) => f.toLowerCase().endsWith(".webp"))
+    .sort();
+  if (ONLY) {
+    const missing = ONLY.filter((f) => !files.includes(f));
+    if (missing.length)
+      console.log(
+        `Not found in public/images (check spelling/case): ${missing.join(", ")}\n`,
+      );
+    files = files.filter((f) => ONLY.includes(f));
+  }
   let totalBefore = 0;
   let totalAfter = 0;
   for (const f of files) {
@@ -143,7 +184,10 @@ if (remote) {
     }
   }
   console.log(
-    `\n${DRY ? "Projected" : "Total"}: ${kib(totalBefore)} -> ${kib(totalAfter)}  (saved ${kib(totalBefore - totalAfter)})`
+    `\n${DRY ? "Projected" : "Total"}: ${kib(totalBefore)} -> ${kib(totalAfter)}  (saved ${kib(totalBefore - totalAfter)})`,
   );
-  if (!DRY) console.log("Originals are in ./image-originals (add it to .gitignore if you don't want it committed).");
+  if (!DRY)
+    console.log(
+      "Originals are in ./image-originals (add it to .gitignore if you don't want it committed).",
+    );
 }
